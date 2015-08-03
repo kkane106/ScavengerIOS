@@ -22,7 +22,6 @@ class CurrentHuntViewController: UIViewController {
     
     func setupMap() {
         // CHANGE THIS TO USE CORE LOCATION OF CURRENT LOCATION OF USER
-        let initialLocation = CLLocation(latitude: 38.9047, longitude: -77.0164)
         
         let regionRadius: CLLocationDistance = 1000
         
@@ -31,7 +30,15 @@ class CurrentHuntViewController: UIViewController {
             huntMap.setRegion(coordinateRegion, animated: true)
         }
         
-        centerMapOnLocation(initialLocation)
+        if let passedValue = passedValue {
+            let initialLocation = passedValue.location
+            println(passedValue.name)
+            centerMapOnLocation(initialLocation)
+            
+        }else {
+            let initialLocation = CLLocation(latitude: 38.9047, longitude: -77.0164)
+            centerMapOnLocation(initialLocation)
+        }
         
     }
 }
