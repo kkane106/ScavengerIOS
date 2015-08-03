@@ -50,12 +50,13 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
         return cities.count
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
-        let cityName = "New York"
-        let cityLocation = CLLocation(latitude: 40.7127, longitude: -74.0059)
-        if (segue!.identifier == "presentCurrentHunt") {
-            let scavengerHunt = ScavengerHunt(name: cityName, location: cityLocation)
-            let destinationVC = segue?.destinationViewController as? CurrentHuntViewController
-        }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let indexPath = tableView.indexPathForSelectedRow()
+        let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!
+        
+        let scavengerHuntToPass = ScavengerHunt(name: cities.keys.array[indexPath!.row], location: cities.values.array[indexPath!.row])
+        performSegueWithIdentifier("presentCurrentHunt", sender: self)
+//        println("Success::\(scavengerHuntToPass.name) \(scavengerHuntToPass.location)")
+
     }
 }
