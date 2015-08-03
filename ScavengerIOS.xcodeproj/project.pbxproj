@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12D7C776B89CCB81A3A317F0 /* Pods_ScavengerIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1388B7E56845E347C7E5F593 /* Pods_ScavengerIOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3C6A87B91B6FC5C70055A7A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A87B81B6FC5C70055A7A8 /* AppDelegate.swift */; };
 		3C6A87BC1B6FC5C70055A7A8 /* ScavengerIOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A87BA1B6FC5C70055A7A8 /* ScavengerIOS.xcdatamodeld */; };
 		3C6A87BE1B6FC5C70055A7A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A87BD1B6FC5C70055A7A8 /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1388B7E56845E347C7E5F593 /* Pods_ScavengerIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScavengerIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C6A87B31B6FC5C70055A7A8 /* ScavengerIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScavengerIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C6A87B71B6FC5C70055A7A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C6A87B81B6FC5C70055A7A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +40,8 @@
 		3C6A87CB1B6FC5C70055A7A8 /* ScavengerIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScavengerIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C6A87D01B6FC5C70055A7A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C6A87D11B6FC5C70055A7A8 /* ScavengerIOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScavengerIOSTests.swift; sourceTree = "<group>"; };
+		876A02643F58D295E9B80F0D /* Pods-ScavengerIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScavengerIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScavengerIOS/Pods-ScavengerIOS.release.xcconfig"; sourceTree = "<group>"; };
+		AA55DEB56A9A26588F87603B /* Pods-ScavengerIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScavengerIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScavengerIOS/Pods-ScavengerIOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12D7C776B89CCB81A3A317F0 /* Pods_ScavengerIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,12 +63,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17E1F063B1B3E412DBC1B86B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1388B7E56845E347C7E5F593 /* Pods_ScavengerIOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3C6A87AA1B6FC5C70055A7A8 = {
 			isa = PBXGroup;
 			children = (
 				3C6A87B51B6FC5C70055A7A8 /* ScavengerIOS */,
 				3C6A87CE1B6FC5C70055A7A8 /* ScavengerIOSTests */,
 				3C6A87B41B6FC5C70055A7A8 /* Products */,
+				8178422DCADEE0322641127E /* Pods */,
+				17E1F063B1B3E412DBC1B86B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,6 +130,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8178422DCADEE0322641127E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA55DEB56A9A26588F87603B /* Pods-ScavengerIOS.debug.xcconfig */,
+				876A02643F58D295E9B80F0D /* Pods-ScavengerIOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,9 +146,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C6A87D51B6FC5C70055A7A8 /* Build configuration list for PBXNativeTarget "ScavengerIOS" */;
 			buildPhases = (
+				8C5238EBE6DD72C57F022A52 /* Check Pods Manifest.lock */,
 				3C6A87AF1B6FC5C70055A7A8 /* Sources */,
 				3C6A87B01B6FC5C70055A7A8 /* Frameworks */,
 				3C6A87B11B6FC5C70055A7A8 /* Resources */,
+				41E61A4077EAF9E64A929B21 /* Embed Pods Frameworks */,
+				43520C87A0C118605B0B798B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -209,6 +236,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		41E61A4077EAF9E64A929B21 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScavengerIOS/Pods-ScavengerIOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		43520C87A0C118605B0B798B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScavengerIOS/Pods-ScavengerIOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C5238EBE6DD72C57F022A52 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3C6A87AF1B6FC5C70055A7A8 /* Sources */ = {
@@ -342,6 +417,7 @@
 		};
 		3C6A87D61B6FC5C70055A7A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA55DEB56A9A26588F87603B /* Pods-ScavengerIOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ScavengerIOS/Info.plist;
@@ -352,6 +428,7 @@
 		};
 		3C6A87D71B6FC5C70055A7A8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 876A02643F58D295E9B80F0D /* Pods-ScavengerIOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ScavengerIOS/Info.plist;
@@ -413,6 +490,7 @@
 				3C6A87D71B6FC5C70055A7A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3C6A87D81B6FC5C70055A7A8 /* Build configuration list for PBXNativeTarget "ScavengerIOSTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +499,7 @@
 				3C6A87DA1B6FC5C70055A7A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
