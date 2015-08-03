@@ -26,6 +26,7 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
                                             ]
     
     let cellID = "ScavengerHuntCell"
+    var scavengerHuntToPass : ScavengerHunt?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +55,18 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
         let indexPath = tableView.indexPathForSelectedRow()
         let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!
         
-        let scavengerHuntToPass = ScavengerHunt(name: cities.keys.array[indexPath!.row], location: cities.values.array[indexPath!.row])
+        scavengerHuntToPass = ScavengerHunt(name: cities.keys.array[indexPath!.row], location: cities.values.array[indexPath!.row])
         performSegueWithIdentifier("presentCurrentHunt", sender: self)
 //        println("Success::\(scavengerHuntToPass.name) \(scavengerHuntToPass.location)")
 
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "presentCurrentHunt") {
+            var destinationVC = segue.destinationViewController as! CurrentHuntViewController
+            if let scavengerHuntToPass = scavengerHuntToPass {
+                destinationVC.passedValue = scavengerHuntToPass
+            }
+        }
     }
 }

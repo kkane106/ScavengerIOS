@@ -11,10 +11,13 @@ import MapKit
 
 class CurrentHuntViewController: UIViewController {
     @IBOutlet weak var huntMap: MKMapView!
+    
+    var passedValue : ScavengerHunt?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMap()
+        println(passedValue)
     }
     
     func setupMap() {
