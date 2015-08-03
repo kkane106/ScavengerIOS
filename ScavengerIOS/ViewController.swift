@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import ObjectMapper
 
 class ViewController: UIViewController {
 
