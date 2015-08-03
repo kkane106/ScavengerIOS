@@ -294,6 +294,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="clueTextView" destination="0Xx-wi-Tes" id="274-CI-H0h"/>
                         <outlet property="huntMap" destination="PGo-lF-MQQ" id="i7h-oR-lJs"/>
                     </connections>
                 </viewController>

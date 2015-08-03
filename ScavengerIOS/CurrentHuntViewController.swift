@@ -12,6 +12,8 @@ import MapKit
 class CurrentHuntViewController: UIViewController {
     @IBOutlet weak var huntMap: MKMapView!
     
+    @IBOutlet weak var clueTextView: UITextView!
+    
     var passedValue : ScavengerHunt?
 
     override func viewDidLoad() {
@@ -34,6 +36,7 @@ class CurrentHuntViewController: UIViewController {
             println(passedValue.name)
             println(passedValue.clue)
             centerMapOnLocation(initialLocation)
+            clueTextView.text = passedValue.clue
 
             
         }else {
