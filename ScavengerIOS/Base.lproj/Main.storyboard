@@ -159,7 +159,7 @@
         <!--Scavenger Hunt List VC-->
         <scene sceneID="Cu4-fA-DDW">
             <objects>
-                <viewController title="Scavenger Hunt List VC" id="ng1-G1-C8h" sceneMemberID="viewController">
+                <viewController title="Scavenger Hunt List VC" id="ng1-G1-C8h" customClass="ListHuntsViewController" customModule="ScavengerIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PTv-v1-jGi"/>
                         <viewControllerLayoutGuide type="bottom" id="C2s-XD-MF6"/>
