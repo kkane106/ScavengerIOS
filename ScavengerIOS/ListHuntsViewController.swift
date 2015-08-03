@@ -10,8 +10,12 @@ import UIKit
 
 class ListHuntsViewController: UIViewController {
 
+    @IBOutlet weak var scavengerHuntsTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    
+
 }

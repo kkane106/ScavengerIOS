@@ -14,6 +14,21 @@ class CurrentHuntViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupMap()
+    }
+    
+    func setupMap() {
+        // CHANGE THIS TO USE CORE LOCATION OF CURRENT LOCATION OF USER
+        let initialLocation = CLLocation(latitude: 38.9047, longitude: -77.0164)
+        
+        let regionRadius: CLLocationDistance = 1000
+        
+        func centerMapOnLocation(location : CLLocation) {
+            let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+            huntMap.setRegion(coordinateRegion, animated: true)
+        }
+        
+        centerMapOnLocation(initialLocation)
+        
     }
 }
