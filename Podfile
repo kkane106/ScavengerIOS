@@ -6,6 +6,7 @@ use_frameworks!
 target 'ScavengerIOS' do
 
     pod 'Alamofire'
+    pod 'SwiftyJSON'
 
 end
 
