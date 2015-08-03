@@ -204,6 +204,15 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2EG-Ei-Mq3">
+                                <rect key="frame" x="169" y="64" width="30" height="30"/>
+                                <state key="normal" title="next">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="f97-vy-nzy" kind="show" id="4OX-gX-IAK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -224,7 +233,7 @@
         <!--Current Hunt VC-->
         <scene sceneID="Zhg-0h-rAt">
             <objects>
-                <viewController title="Current Hunt VC" id="f97-vy-nzy" sceneMemberID="viewController">
+                <viewController title="Current Hunt VC" id="f97-vy-nzy" customClass="CurrentHuntViewController" customModule="ScavengerIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GYN-6f-W3g"/>
                         <viewControllerLayoutGuide type="bottom" id="om5-BI-WMQ"/>
@@ -263,6 +272,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="huntMap" destination="PGo-lF-MQQ" id="i7h-oR-lJs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTG-po-kaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -287,4 +299,7 @@
             <point key="canvasLocation" x="992" y="415"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="biJ-hN-fqG"/>
+    </inferredMetricsTieBreakers>
 </document>
