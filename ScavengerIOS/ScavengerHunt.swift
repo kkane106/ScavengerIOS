@@ -12,9 +12,11 @@ import MapKit
 class ScavengerHunt {
     let name : String
     let location : CLLocation
+    let clue : String
     
-    init(name : String, location : CLLocation) {
+    init(name : String, location : CLLocation, clue : String) {
         self.name = name
         self.location = location
+        self.clue = clue
     }
 }

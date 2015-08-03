@@ -17,7 +17,6 @@ class CurrentHuntViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMap()
-        println(passedValue)
     }
     
     func setupMap() {
@@ -33,7 +32,9 @@ class CurrentHuntViewController: UIViewController {
         if let passedValue = passedValue {
             let initialLocation = passedValue.location
             println(passedValue.name)
+            println(passedValue.clue)
             centerMapOnLocation(initialLocation)
+
             
         }else {
             let initialLocation = CLLocation(latitude: 38.9047, longitude: -77.0164)

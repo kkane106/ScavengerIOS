@@ -19,10 +19,10 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
     completion etc...) objects which contain child locations(lat, long, clue, radius, notification/task)
 */
     let proxyCells : [String] = ["one", "two", "three"]
-    let cities : [String : CLLocation] =    [
-                                            "New York" : CLLocation(latitude: 40.7127, longitude: -74.0059),
-                                            "Los Angeles" : CLLocation(latitude: 34.0500, longitude: -118.2500),
-                                            "Chicago" : CLLocation(latitude: 41.8369, longitude: -87.6847)
+    let cities : [String : AnyObject] =    [
+                                            "New York" : [CLLocation(latitude: 40.7127, longitude: -74.0059), "it's an apple, some would say that it's big"],
+                                            "Los Angeles" : [CLLocation(latitude: 34.0500, longitude: -118.2500), "think hollywood"],
+                                            "Chicago" : [CLLocation(latitude: 41.8369, longitude: -87.6847), "windy city"]
                                             ]
     
     let cellID = "ScavengerHuntCell"
@@ -55,7 +55,10 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
         let indexPath = tableView.indexPathForSelectedRow()
         let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!
         
-        scavengerHuntToPass = ScavengerHunt(name: cities.keys.array[indexPath!.row], location: cities.values.array[indexPath!.row])
+        let nameKey = cities.keys.array[indexPath!.row]
+        let values = cities.values.array[indexPath!.row]
+        
+        scavengerHuntToPass = ScavengerHunt(name: nameKey, location: values[0] as! CLLocation, clue: values[1] as! String)
         performSegueWithIdentifier("presentCurrentHunt", sender: self)
 //        println("Success::\(scavengerHuntToPass.name) \(scavengerHuntToPass.location)")
 
