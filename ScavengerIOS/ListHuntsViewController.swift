@@ -19,11 +19,10 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
     completion etc...) objects which contain child locations(lat, long, clue, radius, notification/task)
 */
     let proxyCells : [String] = ["one", "two", "three"]
-    let cities : [String : AnyObject] =    [
-            "New York" : [CLLocation(latitude: 40.7127, longitude: -74.0059), "it's an apple, some would say that it's big"],
-            "Los Angeles" : [CLLocation(latitude: 34.0500, longitude: -118.2500), "think hollywood"],
-            "Chicago" : [CLLocation(latitude: 41.8369, longitude: -87.6847), "windy city"]
-            ]
+    let newYork : ScavengerHunt = ScavengerHunt(name: "New York", location: CLLocation(latitude: 40.7127, longitude: -74.0059), clue: "it's an apple, some would say that it's big")
+    let chicago : ScavengerHunt = ScavengerHunt(name: "Chicago", location: CLLocation(latitude: 41.8369, longitude: -87.6847), clue: "windy city")
+    let losAngeles : ScavengerHunt = ScavengerHunt(name: "Los Angeles", location: CLLocation(latitude: 34.0500, longitude: -118.2500), clue: "hollywood")
+    let cities : [ScavengerHunt] = [chicago, losAngeles, newYork]
 
     let cellID = "ScavengerHuntCell"
     var scavengerHuntToPass : ScavengerHunt?
@@ -42,7 +41,7 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as! UITableViewCell
-        cell.textLabel?.text = cities.keys.array[indexPath.row]
+        cell.textLabel?.text = cities[indexPath.row].name
         
         return cell
     }
@@ -55,10 +54,10 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
         let indexPath = tableView.indexPathForSelectedRow()
         let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!
         
-        let nameKey = cities.keys.array[indexPath!.row]
-        let values = cities.values.array[indexPath!.row]
-        
-        scavengerHuntToPass = ScavengerHunt(name: nameKey, location: values[0] as! CLLocation, clue: values[1] as! String)
+        if let indexPath = indexPath {
+            scavengerHuntToPass = cities[indexPath.row] as! ScavengerHunt
+        }
+
         performSegueWithIdentifier("presentCurrentHunt", sender: self)
 //        println("Success::\(scavengerHuntToPass.name) \(scavengerHuntToPass.location)")
 
