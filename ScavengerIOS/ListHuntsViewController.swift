@@ -20,11 +20,11 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
 */
     let proxyCells : [String] = ["one", "two", "three"]
     let cities : [String : AnyObject] =    [
-                                            "New York" : [CLLocation(latitude: 40.7127, longitude: -74.0059), "it's an apple, some would say that it's big"],
-                                            "Los Angeles" : [CLLocation(latitude: 34.0500, longitude: -118.2500), "think hollywood"],
-                                            "Chicago" : [CLLocation(latitude: 41.8369, longitude: -87.6847), "windy city"]
-                                            ]
-    
+            "New York" : [CLLocation(latitude: 40.7127, longitude: -74.0059), "it's an apple, some would say that it's big"],
+            "Los Angeles" : [CLLocation(latitude: 34.0500, longitude: -118.2500), "think hollywood"],
+            "Chicago" : [CLLocation(latitude: 41.8369, longitude: -87.6847), "windy city"]
+            ]
+
     let cellID = "ScavengerHuntCell"
     var scavengerHuntToPass : ScavengerHunt?
     
