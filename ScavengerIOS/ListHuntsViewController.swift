@@ -27,20 +27,9 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
 
     let cellID = "ScavengerHuntCell"
     var scavengerHuntToPass : ScavengerHunt?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        // PARSE TEST METHOD
-//        let testObject = PFObject(className: "TestObject")
-//        testObject["foo"] = "bar"
-//        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-//            println("Object has been saved.")
-//        }
-        let hunts = getScavengerHunts()
-        println("hunts below here")
-        println(hunts)
+
         scavengerHuntsTableView.delegate = self
         scavengerHuntsTableView.dataSource = self
         scavengerHuntsTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellID)
@@ -57,7 +46,6 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
                 println("didn't work")
             } else {
                 if let response = response as? [PFObject] {
-                    var scavengerHunts : [ScavengerHunt] = []
                     for object in response {
                         let name = object["name"] as! String
                         let longitude = object["location"]!.longitude
@@ -66,7 +54,6 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
                         let clue = object["clue"] as! String
                         
                         let hunt = ScavengerHunt(name: name, location: location, clue: clue)
-                        scavengerHunts.append(hunt)
                     }
                 }
             }
