@@ -23,11 +23,17 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
     let cities : [ScavengerHunt] = [ScavengerHunt(name: "Chicago", location: CLLocation(latitude: 41.8369, longitude: -87.6847), clue: "windy")]
 
     let cellID = "ScavengerHuntCell"
-    var scavengerHuntToPass : ScavengerHunt?
+    var scavengerHuntToPass : PFObject?
+    
+    var scavengerHunts = [PFObject]()
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        updateScavengerHunts(UIRefreshControl())
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getScavengerHunts()
 
         scavengerHuntsTableView.delegate = self
         scavengerHuntsTableView.dataSource = self
@@ -37,39 +43,35 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
 
     }
     
-    func getScavengerHunts() {
+    func updateScavengerHunts(sender: UIRefreshControl) {
         var query = PFQuery(className: "ScavengerHunt")
+        query.orderByDescending("updatedAt")
         query.findObjectsInBackgroundWithBlock {
-            (response : [AnyObject]?, error: NSError?) -> Void in
+            (response, error) -> Void in
             if error != nil {
                 println("didn't work")
-            } else {
-                if let response = response as? [PFObject] {
-                    for object in response {
-                        let name = object["name"] as! String
-                        let longitude = object["location"]!.longitude
-                        let latitude = object["location"]!.latitude
-                        let location = CLLocation(latitude: latitude, longitude: longitude)
-                        let clue = object["clue"] as! String
-                        
-                        let hunt = ScavengerHunt(name: name, location: location, clue: clue)
-                        
-                        println(hunt)
-                    }
-                }
+                return
             }
+            
+            if let response = response {
+                self.scavengerHunts = response as! [PFObject]
+                println(response[0]["name"])
+            }
+            sender.endRefreshing()
+            self.scavengerHuntsTableView.reloadData()
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as! UITableViewCell
-        cell.textLabel?.text = cities[indexPath.row].name
+        let currentHunt = scavengerHunts[indexPath.row]
+        cell.textLabel?.text = currentHunt["name"] as! String
         
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cities.count
+        return scavengerHunts.count
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -77,7 +79,7 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
         let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!
         
         if let indexPath = indexPath {
-            scavengerHuntToPass = cities[indexPath.row] as! ScavengerHunt
+            scavengerHuntToPass = scavengerHunts[indexPath.row]
         }
         performSegueWithIdentifier("presentCurrentHunt", sender: self)
     }

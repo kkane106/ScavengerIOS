@@ -8,13 +8,14 @@
 
 import UIKit
 import MapKit
+import Parse
 
 class CurrentHuntViewController: UIViewController {
     @IBOutlet weak var huntMap: MKMapView!
     
     @IBOutlet weak var clueTextView: UITextView!
     
-    var passedValue : ScavengerHunt?
+    var passedValue : PFObject?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +33,13 @@ class CurrentHuntViewController: UIViewController {
         }
         
         if let passedValue = passedValue {
-            let initialLocation = passedValue.location
-            println(passedValue.name)
-            println(passedValue.clue)
+            let lat = passedValue["location"]!.latitude
+            let long = passedValue["location"]!.longitude
+            let initialLocation = CLLocation(latitude: lat, longitude: long)
+            println(passedValue["name"])
+            println(passedValue["clue"])
             centerMapOnLocation(initialLocation)
-            clueTextView.text = passedValue.clue
+            clueTextView.text = passedValue["clue"] as! String
 
             
         }else {
