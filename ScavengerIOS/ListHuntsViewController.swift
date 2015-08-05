@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Parse
 
 class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -29,6 +30,14 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        // PARSE TEST METHOD
+//        let testObject = PFObject(className: "TestObject")
+//        testObject["foo"] = "bar"
+//        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+//            println("Object has been saved.")
+//        }
 
         
         scavengerHuntsTableView.delegate = self
