@@ -8,9 +8,26 @@
 
 import UIKit
 import CoreData
+import Parse
+import Bolts
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+//    **************************** ADD PARSE ************************************
+    
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // [Optional] Power your app with Local Datastore. For more info, go to
+        // https://parse.com/docs/ios_guide#localdatastore/iOS
+        Parse.enableLocalDatastore()
+        
+        // Initialize Parse.
+        Parse.setApplicationId("4g3YKxXtahuhE5fNPCUmP2YD3SLIQOK5VoEY1Aht",
+            clientKey: "r6N86v61Q1svBqdthOWVXsQcNpTmZRJW60NcQ3SV")
+        
+        // [Optional] Track statistics around application opens.
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
+//    ***************************************************************************
 
     var window: UIWindow?
 

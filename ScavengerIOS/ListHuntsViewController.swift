@@ -19,10 +19,10 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
     completion etc...) objects which contain child locations(lat, long, clue, radius, notification/task)
 */
     let proxyCells : [String] = ["one", "two", "three"]
-    let newYork : ScavengerHunt = ScavengerHunt(name: "New York", location: CLLocation(latitude: 40.7127, longitude: -74.0059), clue: "it's an apple, some would say that it's big")
-    let chicago : ScavengerHunt = ScavengerHunt(name: "Chicago", location: CLLocation(latitude: 41.8369, longitude: -87.6847), clue: "windy city")
-    let losAngeles : ScavengerHunt = ScavengerHunt(name: "Los Angeles", location: CLLocation(latitude: 34.0500, longitude: -118.2500), clue: "hollywood")
-    let cities : [ScavengerHunt] = [chicago, losAngeles, newYork]
+//    let newYork : ScavengerHunt = ScavengerHunt(name: "New York", location: CLLocation(latitude: 40.7127, longitude: -74.0059), clue: "it's an apple, some would say that it's big")
+//    let chicago : ScavengerHunt = ScavengerHunt(name: "Chicago", location: CLLocation(latitude: 41.8369, longitude: -87.6847), clue: "windy city")
+//    let losAngeles : ScavengerHunt = ScavengerHunt(name: "Los Angeles", location: CLLocation(latitude: 34.0500, longitude: -118.2500), clue: "hollywood")
+    let cities : [ScavengerHunt] = [ScavengerHunt(name: "Chicago", location: CLLocation(latitude: 41.8369, longitude: -87.6847), clue: "windy")]
 
     let cellID = "ScavengerHuntCell"
     var scavengerHuntToPass : ScavengerHunt?
