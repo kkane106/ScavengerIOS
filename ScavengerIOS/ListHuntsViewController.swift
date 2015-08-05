@@ -39,14 +39,21 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
 //            println("Object has been saved.")
 //        }
         var query = PFQuery(className: "ScavengerHunt")
-        query.getObjectInBackgroundWithId("zGHaJsYdfd") {
-            (response : PFObject?, error: NSError?) -> Void in
+        query.findObjectsInBackgroundWithBlock {
+            (response : [AnyObject]?, error: NSError?) -> Void in
             if error != nil {
                 println("didn't work")
             } else {
-                if let response = response {
-                    let name = response["name"] as! String
-                    println("got this back: \(name)")
+                if let response = response as? [PFObject] {
+                    for object in response {
+                        let name = object["name"] as! String
+                        let longitude = object["location"]!.longitude
+                        let latitude = object["location"]!.latitude
+                        let location = CLLocation(latitude: latitude, longitude: longitude)
+                        let clue = object["clue"] as! String
+                        
+                        let hunt = ScavengerHunt(name: name, location: location, clue: clue)
+                    }
                 }
             }
         }
