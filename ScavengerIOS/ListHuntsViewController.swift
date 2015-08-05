@@ -38,26 +38,9 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
 //        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
 //            println("Object has been saved.")
 //        }
-        var query = PFQuery(className: "ScavengerHunt")
-        query.findObjectsInBackgroundWithBlock {
-            (response : [AnyObject]?, error: NSError?) -> Void in
-            if error != nil {
-                println("didn't work")
-            } else {
-                if let response = response as? [PFObject] {
-                    for object in response {
-                        let name = object["name"] as! String
-                        let longitude = object["location"]!.longitude
-                        let latitude = object["location"]!.latitude
-                        let location = CLLocation(latitude: latitude, longitude: longitude)
-                        let clue = object["clue"] as! String
-                        
-                        let hunt = ScavengerHunt(name: name, location: location, clue: clue)
-                    }
-                }
-            }
-        }
-        
+        let hunts = getScavengerHunts()
+        println("hunts below here")
+        println(hunts)
         scavengerHuntsTableView.delegate = self
         scavengerHuntsTableView.dataSource = self
         scavengerHuntsTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellID)
@@ -66,6 +49,29 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
 
     }
     
+    func getScavengerHunts() {
+        var query = PFQuery(className: "ScavengerHunt")
+        query.findObjectsInBackgroundWithBlock {
+            (response : [AnyObject]?, error: NSError?) -> Void in
+            if error != nil {
+                println("didn't work")
+            } else {
+                if let response = response as? [PFObject] {
+                    var scavengerHunts : [ScavengerHunt] = []
+                    for object in response {
+                        let name = object["name"] as! String
+                        let longitude = object["location"]!.longitude
+                        let latitude = object["location"]!.latitude
+                        let location = CLLocation(latitude: latitude, longitude: longitude)
+                        let clue = object["clue"] as! String
+                        
+                        let hunt = ScavengerHunt(name: name, location: location, clue: clue)
+                        scavengerHunts.append(hunt)
+                    }
+                }
+            }
+        }
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as! UITableViewCell
