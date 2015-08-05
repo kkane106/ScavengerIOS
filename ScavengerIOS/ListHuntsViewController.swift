@@ -38,7 +38,18 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
 //        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
 //            println("Object has been saved.")
 //        }
-
+        var query = PFQuery(className: "ScavengerHunt")
+        query.getObjectInBackgroundWithId("zGHaJsYdfd") {
+            (response : PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                println("didn't work")
+            } else {
+                if let response = response {
+                    let name = response["name"] as! String
+                    println("got this back: \(name)")
+                }
+            }
+        }
         
         scavengerHuntsTableView.delegate = self
         scavengerHuntsTableView.dataSource = self
@@ -47,6 +58,7 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
         scavengerHuntsTableView.reloadData()
 
     }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as! UITableViewCell
