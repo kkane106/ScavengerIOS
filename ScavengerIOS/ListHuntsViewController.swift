@@ -57,10 +57,7 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
         if let indexPath = indexPath {
             scavengerHuntToPass = cities[indexPath.row] as! ScavengerHunt
         }
-
         performSegueWithIdentifier("presentCurrentHunt", sender: self)
-//        println("Success::\(scavengerHuntToPass.name) \(scavengerHuntToPass.location)")
-
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
