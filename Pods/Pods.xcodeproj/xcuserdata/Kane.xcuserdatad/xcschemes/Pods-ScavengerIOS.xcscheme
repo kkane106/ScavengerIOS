@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EA8B31DD92C3CABFC8C287F6"
+               BlueprintIdentifier = "29330A4F8F45D4A9BFE0266F"
                BuildableName = "Pods_ScavengerIOS.framework"
                BlueprintName = "Pods-ScavengerIOS"
                ReferencedContainer = "container:Pods.xcodeproj">
