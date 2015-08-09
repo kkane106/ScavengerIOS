@@ -29,28 +29,6 @@
                                     <action selector="doVerifyLogin:" destination="DDO-PD-SpB" eventType="touchUpInside" id="pQO-kY-mVy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHL-9M-S6d">
-                                <rect key="frame" x="16" y="280" width="568" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Forgot Password">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="doPresentForgotPassword:" destination="DDO-PD-SpB" eventType="touchUpInside" id="BBY-OM-KWd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4n-OI-10H">
-                                <rect key="frame" x="16" y="329" width="568" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Signup">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="doPresentSignUp:" destination="DDO-PD-SpB" eventType="touchUpInside" id="1Zk-lE-Azn"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D6U-rh-lRR">
                                 <rect key="frame" x="16" y="184" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -67,23 +45,31 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4n-OI-10H">
+                                <rect key="frame" x="16" y="275" width="568" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Signup">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doPresentSignUp:" destination="DDO-PD-SpB" eventType="touchUpInside" id="1Zk-lE-Azn"/>
+                                    <segue destination="owd-Bh-rGA" kind="presentation" id="xxe-k0-rg7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gAt-dt-XwU" firstAttribute="top" secondItem="A4n-OI-10H" secondAttribute="bottom" constant="295" id="6ph-Eo-8BQ"/>
                             <constraint firstItem="vXW-uA-sa7" firstAttribute="leading" secondItem="7Bs-fm-TXe" secondAttribute="leadingMargin" id="8ri-fS-zcV"/>
-                            <constraint firstItem="A4n-OI-10H" firstAttribute="top" secondItem="LHL-9M-S6d" secondAttribute="bottom" constant="19" id="AGF-D0-T5V"/>
-                            <constraint firstItem="LHL-9M-S6d" firstAttribute="top" secondItem="IRk-dV-xai" secondAttribute="bottom" constant="20" id="Ahw-ZS-RgP"/>
-                            <constraint firstItem="gAt-dt-XwU" firstAttribute="top" secondItem="A4n-OI-10H" secondAttribute="bottom" constant="241" id="C8Q-2I-eLM"/>
-                            <constraint firstItem="LHL-9M-S6d" firstAttribute="trailing" secondItem="7Bs-fm-TXe" secondAttribute="trailingMargin" id="Eqm-cB-i5n"/>
                             <constraint firstItem="IRk-dV-xai" firstAttribute="top" secondItem="D6U-rh-lRR" secondAttribute="bottom" constant="16" id="FUs-aX-mmS"/>
                             <constraint firstItem="A4n-OI-10H" firstAttribute="leading" secondItem="7Bs-fm-TXe" secondAttribute="leadingMargin" id="GLQ-di-0oW"/>
                             <constraint firstItem="vXW-uA-sa7" firstAttribute="top" secondItem="By5-bc-VrH" secondAttribute="bottom" constant="13" id="Kyg-jh-EDc"/>
                             <constraint firstItem="D6U-rh-lRR" firstAttribute="trailing" secondItem="7Bs-fm-TXe" secondAttribute="trailingMargin" id="MNR-x2-jOQ"/>
-                            <constraint firstItem="LHL-9M-S6d" firstAttribute="leading" secondItem="7Bs-fm-TXe" secondAttribute="leadingMargin" id="NQc-4t-ghG"/>
                             <constraint firstItem="vXW-uA-sa7" firstAttribute="trailing" secondItem="7Bs-fm-TXe" secondAttribute="trailingMargin" id="OjU-CW-pIn"/>
                             <constraint firstItem="By5-bc-VrH" firstAttribute="leading" secondItem="7Bs-fm-TXe" secondAttribute="leadingMargin" id="VHu-Vv-rMk"/>
                             <constraint firstItem="IRk-dV-xai" firstAttribute="leading" secondItem="7Bs-fm-TXe" secondAttribute="leadingMargin" id="X5U-A3-ZoD"/>
-                            <constraint firstItem="LHL-9M-S6d" firstAttribute="top" secondItem="IRk-dV-xai" secondAttribute="bottom" constant="20" id="ZKs-La-Zbr"/>
+                            <constraint firstItem="A4n-OI-10H" firstAttribute="top" secondItem="IRk-dV-xai" secondAttribute="bottom" constant="15" id="ZTZ-OK-mDo"/>
                             <constraint firstItem="A4n-OI-10H" firstAttribute="trailing" secondItem="7Bs-fm-TXe" secondAttribute="trailingMargin" id="bVF-5J-3PS"/>
                             <constraint firstItem="D6U-rh-lRR" firstAttribute="leading" secondItem="7Bs-fm-TXe" secondAttribute="leadingMargin" id="cQw-qh-CB0"/>
                             <constraint firstItem="By5-bc-VrH" firstAttribute="trailing" secondItem="7Bs-fm-TXe" secondAttribute="trailingMargin" id="e3B-lH-waU"/>
@@ -97,7 +83,6 @@
                             <mask key="constraints">
                                 <exclude reference="qmf-hS-7Ac"/>
                                 <exclude reference="fRt-ab-uYH"/>
-                                <exclude reference="ZKs-La-Zbr"/>
                             </mask>
                         </variation>
                     </view>
@@ -106,6 +91,7 @@
                         <outlet property="messageLabel" destination="By5-bc-VrH" id="fH2-jk-KNE"/>
                         <outlet property="passwordTextField" destination="D6U-rh-lRR" id="TK6-we-ZKW"/>
                         <outlet property="usernameTextField" destination="vXW-uA-sa7" id="Prk-kS-s42"/>
+                        <segue destination="zpW-gE-MgU" kind="show" identifier="loginViewSegue" id="L9q-0e-ngo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hLi-JL-Hph" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -213,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FsQ-Kp-Uui" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1804" y="415"/>
+            <point key="canvasLocation" x="1804" y="439"/>
         </scene>
         <!--Forgot Password VC-->
         <scene sceneID="CSG-5L-Os1">
