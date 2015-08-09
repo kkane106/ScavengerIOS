@@ -9,17 +9,36 @@
 import UIKit
 import MapKit
 import Parse
+import CoreLocation
 
-class CurrentHuntViewController: UIViewController {
+class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var huntMap: MKMapView!
     
     @IBOutlet weak var clueTextView: UITextView!
     
     var passedValue : PFObject?
+    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        
+        
         setupMap()
+    }
+    
+    @IBAction func doFindMe(sender: UIBarButtonItem) {
+        println("THIS: \(huntMap.userLocation.location?.coordinate)")
+        zoomToCurrentUserLocationInMap(huntMap)
+    }
+    
+    func zoomToCurrentUserLocationInMap(mapView: MKMapView) {
+        if let coordinate = mapView.userLocation.location?.coordinate {
+            let region = MKCoordinateRegionMakeWithDistance(coordinate, 5000, 5000)
+            mapView.setRegion(region, animated: true)
+        }
     }
     
     func setupMap() {

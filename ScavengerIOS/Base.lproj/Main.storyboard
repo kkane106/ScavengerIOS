@@ -8,7 +8,7 @@
         <!--Login VC-->
         <scene sceneID="PNa-rA-nJ5">
             <objects>
-                <viewController title="Login VC" id="Wfz-oZ-q5U" sceneMemberID="viewController">
+                <viewController title="Login VC" id="Wfz-oZ-q5U" customClass="LoginViewController" customModule="ScavengerIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jZq-jC-iWf"/>
                         <viewControllerLayoutGuide type="bottom" id="q5X-qb-eAG"/>
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="03V-xB-8If">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="03V-xB-8If">
                                 <rect key="frame" x="16" y="174" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -30,6 +30,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="doVerifyLogin:" destination="Wfz-oZ-q5U" eventType="touchUpInside" id="bRt-r4-Ccz"/>
                                     <segue destination="zpW-gE-MgU" kind="show" id="N8d-Pz-W87"/>
                                 </connections>
                             </button>
@@ -44,30 +45,54 @@
                                     <segue destination="ujQ-Ry-61x" kind="presentation" id="Ard-Fe-hkc"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rCL-en-sNi">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rCL-en-sNi">
                                 <rect key="frame" x="16" y="233" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xr-z5-Rtc">
+                                <rect key="frame" x="16" y="145" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="rCL-en-sNi" firstAttribute="top" secondItem="03V-xB-8If" secondAttribute="bottom" constant="29" id="0E5-eC-ol5"/>
+                            <constraint firstItem="6Xr-z5-Rtc" firstAttribute="trailing" secondItem="UfO-RW-jDB" secondAttribute="trailingMargin" id="BTE-yN-fnS"/>
                             <constraint firstItem="sU7-aS-8xQ" firstAttribute="leading" secondItem="UfO-RW-jDB" secondAttribute="leadingMargin" id="BYN-Kq-9Hk"/>
                             <constraint firstItem="03V-xB-8If" firstAttribute="trailing" secondItem="UfO-RW-jDB" secondAttribute="trailingMargin" id="BiI-cS-B9Y"/>
                             <constraint firstItem="03V-xB-8If" firstAttribute="top" secondItem="jZq-jC-iWf" secondAttribute="bottom" constant="110" id="FJa-8V-lEG"/>
                             <constraint firstItem="rCL-en-sNi" firstAttribute="leading" secondItem="UfO-RW-jDB" secondAttribute="leadingMargin" id="KNw-IG-AA4"/>
                             <constraint firstItem="k1x-pa-7ZT" firstAttribute="top" secondItem="rCL-en-sNi" secondAttribute="bottom" constant="16" id="RaN-p4-1NE"/>
                             <constraint firstItem="sU7-aS-8xQ" firstAttribute="trailing" secondItem="UfO-RW-jDB" secondAttribute="trailingMargin" id="UOy-Ok-4wM"/>
+                            <constraint firstItem="6Xr-z5-Rtc" firstAttribute="leading" secondItem="UfO-RW-jDB" secondAttribute="leadingMargin" constant="255" id="XZL-KP-UNZ"/>
                             <constraint firstItem="sU7-aS-8xQ" firstAttribute="trailing" secondItem="UfO-RW-jDB" secondAttribute="trailingMargin" id="XkQ-DI-Q8M"/>
                             <constraint firstItem="rCL-en-sNi" firstAttribute="trailing" secondItem="UfO-RW-jDB" secondAttribute="trailingMargin" id="c6S-x6-upc"/>
                             <constraint firstItem="sU7-aS-8xQ" firstAttribute="top" secondItem="k1x-pa-7ZT" secondAttribute="bottom" constant="20" id="iRB-rX-Dfd"/>
+                            <constraint firstItem="6Xr-z5-Rtc" firstAttribute="top" secondItem="jZq-jC-iWf" secondAttribute="bottom" constant="81" id="mYy-V4-GYg"/>
+                            <constraint firstItem="03V-xB-8If" firstAttribute="top" secondItem="6Xr-z5-Rtc" secondAttribute="bottom" constant="8" id="mfH-k6-qyr"/>
+                            <constraint firstItem="6Xr-z5-Rtc" firstAttribute="leading" secondItem="UfO-RW-jDB" secondAttribute="leadingMargin" id="qzk-VW-p3q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6Xr-z5-Rtc" secondAttribute="trailing" constant="271" id="spe-pe-X0D"/>
                             <constraint firstItem="03V-xB-8If" firstAttribute="leading" secondItem="UfO-RW-jDB" secondAttribute="leadingMargin" id="wmQ-wR-B2s"/>
                             <constraint firstItem="k1x-pa-7ZT" firstAttribute="trailing" secondItem="UfO-RW-jDB" secondAttribute="trailingMargin" id="xfA-KU-1oE"/>
                             <constraint firstItem="k1x-pa-7ZT" firstAttribute="leading" secondItem="UfO-RW-jDB" secondAttribute="leadingMargin" id="yqA-c9-zZ8"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="XZL-KP-UNZ"/>
+                                <exclude reference="spe-pe-X0D"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="bsh-u3-kog"/>
+                    <connections>
+                        <outlet property="doVerifyLogin" destination="k1x-pa-7ZT" id="FVK-ep-gJ1"/>
+                        <outlet property="emailTextField" destination="03V-xB-8If" id="OQj-lA-1F4"/>
+                        <outlet property="messageLabel" destination="6Xr-z5-Rtc" id="lam-Lq-1pD"/>
+                        <outlet property="passwordTextField" destination="rCL-en-sNi" id="Yzj-tr-C2C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FsQ-Kp-Uui" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -192,7 +217,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="f97-vy-nzy" kind="show" identifier="presentCurrentHunt" id="JyZ-8D-9pf"/>
+                                            <segue destination="QU6-gy-RfP" kind="show" identifier="presentCurrentHunt" id="JyZ-8D-9pf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -230,7 +255,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PGo-lF-MQQ">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGo-lF-MQQ">
                                 <rect key="frame" x="16" y="72" width="568" height="327"/>
                             </mapView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Clue" translatesAutoresizingMaskIntoConstraints="NO" id="0Xx-wi-Tes">
@@ -278,6 +303,13 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="OCv-6b-UHU">
+                        <barButtonItem key="leftBarButtonItem" title="Find Me" id="0v9-xz-kdS">
+                            <connections>
+                                <action selector="doFindMe:" destination="f97-vy-nzy" id="HwK-dA-STH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="clueTextView" destination="0Xx-wi-Tes" id="274-CI-H0h"/>
                         <outlet property="huntMap" destination="PGo-lF-MQQ" id="i7h-oR-lJs"/>
@@ -285,7 +317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTG-po-kaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3825" y="415"/>
+            <point key="canvasLocation" x="4637" y="415"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nfb-KQ-xLQ">
@@ -304,6 +336,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DaX-Y1-oKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="992" y="415"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hUw-qo-OCt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QU6-gy-RfP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2eL-Ok-RPP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="f97-vy-nzy" kind="relationship" relationship="rootViewController" id="r1y-hE-CbX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="96g-Bw-VPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3825" y="415"/>
         </scene>
     </scenes>
 </document>

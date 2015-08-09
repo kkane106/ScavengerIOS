@@ -10,14 +10,18 @@ import UIKit
 import CoreData
 import Parse
 import Bolts
+import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
-
+    let locationManager = CLLocationManager()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
         // Override point for customization after application launch.
 
 // ******************************** ADD PARSE ********************************************
