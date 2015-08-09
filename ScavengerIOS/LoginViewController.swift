@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
+        checkLogin()
     }
     
     override func viewDidLoad() {
@@ -81,6 +82,7 @@ class LoginViewController: UIViewController {
                     println(error)
                 }
             } else {
+                println(user)
                 if let user = user {
                     // If user record is returned
                     self.messageLabel.text = "Record found"
@@ -98,6 +100,8 @@ class LoginViewController: UIViewController {
                     // Set "hasLoginKey" to true
                     self.defaults.setBool(true, forKey: "hasLoginKey")
                     self.defaults.synchronize()
+                    println(self.defaults.valueForKey("username"))
+                    println(self.defaults.boolForKey("hasLoginKey"))
                     
                     self.performSegueWithIdentifier("loginViewSegue", sender: self)
 
@@ -108,7 +112,7 @@ class LoginViewController: UIViewController {
     }
     
     // Ensure that the username matches what is stored in UserDefault and the password matches Keychain
-    func checkLogin(username: String, password:String) -> Bool {
+    func checkLogin() -> Bool {
         let password = MyKeyChainWrapper.myObjectForKey("v_Data") as? String
         let username = defaults.valueForKey("username") as? String
         
@@ -118,6 +122,7 @@ class LoginViewController: UIViewController {
                 println("found a username in user defaults")
                 PFUser.logInWithUsernameInBackground(username, password: password) {
                     (user: PFUser?, error: NSError?) -> Void in
+                    println(user)
                     if error != nil {
                         if let error = error {
                             println("User not found")
