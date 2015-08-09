@@ -35,7 +35,8 @@ class LoginViewController: UIViewController {
             (user: PFUser?, error: NSError?) -> Void in
             if error != nil {
                 if let error = error {
-                    println("something went wrong")
+                    self.messageLabel.text = "NO record found"
+                    println(error)
                 }
             } else {
                 if let user = user {
