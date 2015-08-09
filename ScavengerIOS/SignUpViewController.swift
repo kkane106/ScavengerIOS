@@ -22,7 +22,7 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func doVerifyLogin(sender: UIButton) {
+    @IBAction func doVerifySignUp(sender: UIButton) {
         if emailTextField.text != "" && passwordTextField.text != "" && usernameTextField.text != ""{
             userSignUp()
         } else {
