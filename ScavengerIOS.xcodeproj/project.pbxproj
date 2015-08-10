@@ -12,6 +12,7 @@
 		3C35819D1B77FE9A00BD1998 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35819C1B77FE9A00BD1998 /* SignUpViewController.swift */; };
 		3C35819F1B78047500BD1998 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35819E1B78047500BD1998 /* LoginViewController.swift */; };
 		3C3581A31B7810F600BD1998 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3581A21B7810F600BD1998 /* KeychainWrapper.m */; };
+		3C3581A51B7820CD00BD1998 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3581A41B7820CD00BD1998 /* HomeViewController.swift */; };
 		3C6A87B91B6FC5C70055A7A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A87B81B6FC5C70055A7A8 /* AppDelegate.swift */; };
 		3C6A87BC1B6FC5C70055A7A8 /* ScavengerIOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A87BA1B6FC5C70055A7A8 /* ScavengerIOS.xcdatamodeld */; };
 		3C6A87BE1B6FC5C70055A7A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A87BD1B6FC5C70055A7A8 /* ViewController.swift */; };
@@ -57,6 +58,7 @@
 		3C3581A01B7810F400BD1998 /* ScavengerIOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScavengerIOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		3C3581A11B7810F600BD1998 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		3C3581A21B7810F600BD1998 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
+		3C3581A41B7820CD00BD1998 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3C6A87B31B6FC5C70055A7A8 /* ScavengerIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScavengerIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C6A87B71B6FC5C70055A7A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C6A87B81B6FC5C70055A7A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				3C35819C1B77FE9A00BD1998 /* SignUpViewController.swift */,
 				3CD969C21B6FE61E009574CB /* CurrentHuntViewController.swift */,
 				3CD969C41B6FE702009574CB /* ListHuntsViewController.swift */,
+				3C3581A41B7820CD00BD1998 /* HomeViewController.swift */,
 				3CF468431B72ABB70082D254 /* Keys.swift */,
 				3CD969C61B700448009574CB /* ScavengerHunt.swift */,
 				3C6A87C21B6FC5C70055A7A8 /* Images.xcassets */,
@@ -382,6 +385,7 @@
 				3C6A87BC1B6FC5C70055A7A8 /* ScavengerIOS.xcdatamodeld in Sources */,
 				3C6A87B91B6FC5C70055A7A8 /* AppDelegate.swift in Sources */,
 				3CD969C51B6FE702009574CB /* ListHuntsViewController.swift in Sources */,
+				3C3581A51B7820CD00BD1998 /* HomeViewController.swift in Sources */,
 				3CD969C31B6FE61E009574CB /* CurrentHuntViewController.swift in Sources */,
 				3CD969C71B700448009574CB /* ScavengerHunt.swift in Sources */,
 				3C3581A31B7810F600BD1998 /* KeychainWrapper.m in Sources */,

@@ -18,8 +18,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     let MyKeyChainWrapper = KeychainWrapper()
-    let createLoginButtonTag = 0
-    let loginButtonTag = 1
+    var userToPass : PFUser?
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
@@ -46,31 +45,6 @@ class LoginViewController: UIViewController {
         passwordTextField.resignFirstResponder()
         
         userLogin()
-//
-//        if sender.tag == createLoginButtonTag {
-//            let hasLoginKey = defaults.boolForKey("hasLoginKey")
-//            if hasLoginKey == false {
-//                defaults.setValue(self.usernameTextField.text, forKey: "username")
-//            }
-//            
-//            MyKeyChainWrapper.mySetObject(passwordTextField.text, forKey: kSecValueData)
-//            MyKeyChainWrapper.writeToKeychain()
-//            defaults.setBool(true, forKey: "hasLoginKey")
-//            defaults.synchronize()
-//            loginButton.tag = loginButtonTag
-//            
-//            performSegueWithIdentifier("loginViewSegue", sender: self)
-//        } else if sender.tag == loginButtonTag {
-//            if checkLogin(usernameTextField.text, password: passwordTextField.text) {
-//                performSegueWithIdentifier("loginViewSegue", sender: self)
-//            }
-//        } else {
-//            var alert = UIAlertView()
-//            alert.title = "Login Problem"
-//            alert.message = "Wrong username or password"
-//            alert.addButtonWithTitle("Rats")
-//            alert.show()
-//        }
     }
     
     func userLogin() {
@@ -130,12 +104,14 @@ class LoginViewController: UIViewController {
                             
                         } else {
                             if let user = user {
+                                self.userToPass = user
                                 println("parse returned a user")
                             }
                         }
                     }
                 }
                 println("returned true")
+                self.performSegueWithIdentifier("loginViewSegue", sender: self)
                 return true
             } else {
                 println("returned false")
@@ -144,6 +120,15 @@ class LoginViewController: UIViewController {
         }
             
         return false
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "loginViewSegue") {
+            var destinationVC = segue.destinationViewController as! HomeViewController
+            if let userToPass = userToPass {
+                destinationVC.passedValue = userToPass
+            }
+        }
     }
     
     @IBAction func doPresentSignUp(sender: UIButton) {
