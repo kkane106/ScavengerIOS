@@ -19,31 +19,6 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        //1
-        let appDelegate =
-        UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext!
-        
-        //2
-        let fetchRequest = NSFetchRequest(entityName:"User")
-        
-        //3
-        var error: NSError?
-        
-        let fetchedResults =
-        managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as? [NSManagedObject]
-        
-        if let results = fetchedResults {
-            users = results
-        } else {
-            println("Could not fetch \(error), \(error!.userInfo)")
-        }
-        if let users = users {
-            println(users[0].valueForKey("username"))
-            println(users.count)
-        }
     }
     
     override func viewDidLoad() {

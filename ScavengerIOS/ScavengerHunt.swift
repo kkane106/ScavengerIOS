@@ -8,15 +8,13 @@
 
 import Foundation
 import MapKit
+import CoreData
 
-class ScavengerHunt {
-    let name : String
-    let location : CLLocation
-    let clue : String
+class ScavengerHunt : NSManagedObject {
+    @NSManaged var name : String
+    @NSManaged var locations : NSSet
+    @NSManaged var updatedAt : NSDate
+    @NSManaged var createdAt : NSDate
+    @NSManaged var id : String
     
-    init(name : String, location : CLLocation, clue : String) {
-        self.name = name
-        self.location = location
-        self.clue = clue
-    }
 }

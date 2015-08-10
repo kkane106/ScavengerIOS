@@ -13,14 +13,6 @@ import Parse
 class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var scavengerHuntsTableView: UITableView!
-    
-    // This needs to be actual data fetched from the web/core data
-/*     
-    should be Scavenger Hunt(name, creator, date created, number of locations, average time of
-    completion etc...) objects which contain child locations(lat, long, clue, radius, notification/task)
-*/
-//    let losAngeles : ScavengerHunt = ScavengerHunt(name: "Los Angeles", location: CLLocation(latitude: 34.0500, longitude: -118.2500), clue: "hollywood")
-    let cities : [ScavengerHunt] = [ScavengerHunt(name: "Chicago", location: CLLocation(latitude: 41.8369, longitude: -87.6847), clue: "windy")]
 
     let cellID = "ScavengerHuntCell"
     var scavengerHuntToPass : PFObject?
@@ -55,7 +47,7 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
             
             if let response = response {
                 self.scavengerHunts = response as! [PFObject]
-                println(response[0]["name"])
+                println("RESPONSE AS LIST OF SCAVENGER HUNTS: \(response)")
             }
             sender.endRefreshing()
             self.scavengerHuntsTableView.reloadData()

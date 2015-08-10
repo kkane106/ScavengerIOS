@@ -52,13 +52,31 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         if let passedValue = passedValue {
-            let lat = passedValue["location"]!.latitude
-            let long = passedValue["location"]!.longitude
-            let initialLocation = CLLocation(latitude: lat, longitude: long)
-            println(passedValue["name"])
-            println(passedValue["clue"])
-            centerMapOnLocation(initialLocation)
-            clueTextView.text = passedValue["clue"] as! String
+            getLocationsForHunt(passedValue, completion: { (locations) -> () in
+                if locations.count == 0 {
+                    println("no locations were returned")
+                    return
+                }
+                
+                let lat = locations[0]["coordinate"]!.latitude
+                let long = locations[0]["coordinate"]!.longitude
+                let initialLocation = CLLocation(latitude: lat, longitude: long)
+                let coordinateRegion = MKCoordinateRegionMakeWithDistance(initialLocation.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+                self.huntMap.setRegion(coordinateRegion, animated: true)
+                self.clueTextView.text = locations[0]["clue"] as! String
+                
+                
+                
+                
+            })
+
+//            let lat = passedValue["location"]!.latitude
+//            let long = passedValue["location"]!.longitude
+//            let initialLocation = CLLocation(latitude: lat, longitude: long)
+//            println(passedValue["name"])
+//            println(passedValue["clue"])
+//            centerMapOnLocation(initialLocation)
+//            clueTextView.text = passedValue["clue"] as! String
 
             
         }else {
@@ -67,4 +85,37 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
         }
         
     }
+    
+    func getLocationsForHunt(hunt : PFObject, completion: (locations : [PFObject]) -> ()) {
+        let query = PFQuery(className: "Location")
+        query.whereKey("ScavengerHuntId", equalTo: hunt)
+        query.findObjectsInBackgroundWithBlock({
+            (results, error : NSError?) -> Void in
+            if error != nil {
+                if let error = error {
+                    println("error")
+                }
+            }
+            println(results)
+            if let results = results {
+                completion(locations: results as! [PFObject])
+            }
+        })
+        
+    }
 }
+
+//        getSavedData { (data) -> () in
+//            println("Here is data: \(data)")
+//        }
+
+
+//}
+
+//    func getSavedData(completion: (data: PFObject) -> ()) {
+//        let query = PFQuery(className: "ScavengerHunt")
+//        let results = query.getFirstObject()
+//        if let results = results {
+//            completion(data: results)
+//        }
+//    }

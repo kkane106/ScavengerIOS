@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
         println("prepare to check login")
         checkUserLogin { (parseUser) -> () in
             self.performSegueWithIdentifier("loginViewSegue", sender: self)
-            self.unwrapParseUserValues(parseUser)
+//            self.unwrapParseUserValues(parseUser)
 
         }
         println("just checked login")
