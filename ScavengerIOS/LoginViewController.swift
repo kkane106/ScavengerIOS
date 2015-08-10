@@ -20,23 +20,27 @@ class LoginViewController: UIViewController {
     
     let MyKeyChainWrapper = KeychainWrapper()
     
-    var currentUser : NSManagedObject?
-    var cU : String?
+    var currentUser = [PFUser]()
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         println("prepare to check login")
-        checkLogin()
+        checkUserLogin { (parseUser) -> () in
+            self.performSegueWithIdentifier("loginViewSegue", sender: self)
+            self.unwrapParseUserValues(parseUser)
+
+        }
         println("just checked login")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+
     }
+    
     @IBAction func doVerifyLogin(sender: UIButton) {
         if (usernameTextField.text == "" || passwordTextField.text == "") {
             var alert = UIAlertView()
@@ -88,8 +92,25 @@ class LoginViewController: UIViewController {
         }
     }
     
-    // Ensure that the username matches what is stored in UserDefault and the password matches Keychain
-    func checkLogin() {
+    func unwrapParseUserValues(user : PFUser?) {
+        if let userToSave = user {
+            if let objectId = userToSave.objectId {
+                if let createdAt = userToSave.createdAt {
+                    if let updatedAt = userToSave.updatedAt {
+                        if let username = userToSave.username {
+                            if let email = userToSave.email {
+
+                                self.saveUser(username as! String, email: email as! String, createdAt: createdAt as! NSDate, updatedAt: updatedAt as! NSDate, objectId: objectId as! String)
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+    
+    func checkUserLogin(completion : (parseUser: PFUser) -> ()) {
         let passwordKeychain = MyKeyChainWrapper.myObjectForKey("v_Data") as? String
         let usernameDefault = defaults.valueForKey("username") as? String
 
@@ -106,32 +127,21 @@ class LoginViewController: UIViewController {
                             
                         }
                     }
-                    if let userToSave = user {
-
-                        if let email = userToSave.email {
-                            if let createdAt = userToSave.createdAt {
-                                if let updatedAt = userToSave.updatedAt {
-                                    if let username = userToSave.username {
-                                        if let objectId = userToSave.objectId {
-                                            
-                                            self.saveUser(username as! String, email: email as! String, createdAt: createdAt as! NSDate, updatedAt: updatedAt as! NSDate, objectId: objectId as! String)
-                                            self.performSegueWithIdentifier("loginViewSegue", sender: self)
-                                        }
-                                    }
-                                    
-                                }
-                            }
-                        }
+                    
+                    if let user = user {
+                        completion(parseUser: user)
                     }
-
+                    
                 })
             }
         }
+
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "loginSegueView") {
             var destinationVC = segue.destinationViewController as! HomeViewController
+            
         }
     }
     
@@ -154,11 +164,6 @@ class LoginViewController: UIViewController {
         if !managedContext.save(&error) {
             println("Could not save \(error), \(error?.userInfo)")
         }
-        currentUser = user
-        println(user)
-        println(currentUser)
-        println("should be above")
-        
     }
     
     @IBAction func doPresentSignUp(sender: UIButton) {

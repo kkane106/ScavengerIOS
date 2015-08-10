@@ -13,45 +13,55 @@ import CoreData
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var userLabel: UILabel!
-
-
     
-    var currentUser : AnyObject?
+    var users : [NSManagedObject]?
     
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        super.viewWillAppear(animated)
+        
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
         let managedContext = appDelegate.managedObjectContext!
         
-        let fetchRequest = NSFetchRequest(entityName: "User")
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: nil)
+        //2
+        let fetchRequest = NSFetchRequest(entityName:"User")
+        
+        //3
+        var error: NSError?
+        
+        let fetchedResults =
+        managedContext.executeFetchRequest(fetchRequest,
+            error: &error) as? [NSManagedObject]
         
         if let results = fetchedResults {
-            currentUser = results
+            users = results
         } else {
-            println("something went awry")
+            println("Could not fetch \(error), \(error!.userInfo)")
         }
-        
+        if let users = users {
+            println(users[0].valueForKey("username"))
+            println(users.count)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("LOOK HERE \(currentUser)")
-        
-//        var query = PFQuery(className: "ScavengerHunt")
-//        query.whereKey("createdBy", equalTo: "kkane")
-//        query.findObjectsInBackgroundWithBlock {
-//            (result, error) -> Void in
-//            if error != nil {
-//                println("soemthign went wrong")
-//                println(error)
-//                println(self.currentUser)
-//            } else {
-//                println(result)
-//            }
+//        getSavedData { (data) -> () in
+//            println("Here is data: \(data)")
 //        }
+
+
     }
+    
+//    func getSavedData(completion: (data: PFObject) -> ()) {
+//        let query = PFQuery(className: "ScavengerHunt")
+//        let results = query.getFirstObject()
+//        if let results = results {
+//            completion(data: results)
+//        }
+//    }
 
     
 }
