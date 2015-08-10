@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import Parse
+import CoreData
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
@@ -18,13 +19,17 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     let MyKeyChainWrapper = KeychainWrapper()
-    var userToPass : PFUser?
+    
+    var currentUser : NSManagedObject?
+    var cU : String?
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
+        println("prepare to check login")
         checkLogin()
+        println("just checked login")
     }
     
     override func viewDidLoad() {
@@ -56,7 +61,7 @@ class LoginViewController: UIViewController {
                     println(error)
                 }
             } else {
-                println(user)
+                println("IS it this one? \(user)")
                 if let user = user {
                     // If user record is returned
                     self.messageLabel.text = "Record found"
@@ -74,8 +79,6 @@ class LoginViewController: UIViewController {
                     // Set "hasLoginKey" to true
                     self.defaults.setBool(true, forKey: "hasLoginKey")
                     self.defaults.synchronize()
-                    println(self.defaults.valueForKey("username"))
-                    println(self.defaults.boolForKey("hasLoginKey"))
                     
                     self.performSegueWithIdentifier("loginViewSegue", sender: self)
 
@@ -86,49 +89,76 @@ class LoginViewController: UIViewController {
     }
     
     // Ensure that the username matches what is stored in UserDefault and the password matches Keychain
-    func checkLogin() -> Bool {
-        let password = MyKeyChainWrapper.myObjectForKey("v_Data") as? String
-        let username = defaults.valueForKey("username") as? String
-        
-        if let password = password {
-            println("found a password in keychain")
-            if let username = username {
-                println("found a username in user defaults")
-                PFUser.logInWithUsernameInBackground(username, password: password) {
-                    (user: PFUser?, error: NSError?) -> Void in
-                    println(user)
+    func checkLogin() {
+        let passwordKeychain = MyKeyChainWrapper.myObjectForKey("v_Data") as? String
+        let usernameDefault = defaults.valueForKey("username") as? String
+
+        if let savedPW = passwordKeychain {
+            println(savedPW)
+            if let savedUserName = usernameDefault {
+                println(savedUserName)
+                PFUser.logInWithUsernameInBackground(savedUserName, password: savedPW, block: {
+                    (user, error) -> Void in
                     if error != nil {
                         if let error = error {
                             println("User not found")
                             println(error)
                             
-                        } else {
-                            if let user = user {
-                                self.userToPass = user
-                                println("parse returned a user")
+                        }
+                    }
+                    if let userToSave = user {
+
+                        if let email = userToSave.email {
+                            if let createdAt = userToSave.createdAt {
+                                if let updatedAt = userToSave.updatedAt {
+                                    if let username = userToSave.username {
+                                        if let objectId = userToSave.objectId {
+                                            
+                                            self.saveUser(username as! String, email: email as! String, createdAt: createdAt as! NSDate, updatedAt: updatedAt as! NSDate, objectId: objectId as! String)
+                                            self.performSegueWithIdentifier("loginViewSegue", sender: self)
+                                        }
+                                    }
+                                    
+                                }
                             }
                         }
                     }
-                }
-                println("returned true")
-                self.performSegueWithIdentifier("loginViewSegue", sender: self)
-                return true
-            } else {
-                println("returned false")
-                return false
+
+                })
             }
         }
-            
-        return false
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "loginViewSegue") {
+        if (segue.identifier == "loginSegueView") {
             var destinationVC = segue.destinationViewController as! HomeViewController
-            if let userToPass = userToPass {
-                destinationVC.passedValue = userToPass
-            }
         }
+    }
+    
+    func saveUser(username: String, email: String, createdAt: NSDate, updatedAt: NSDate, objectId: String ) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: managedContext)
+        
+        let user = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        user.setValue(username, forKey: "username")
+        user.setValue(email, forKey: "email")
+        user.setValue(createdAt, forKey: "createdAt")
+        user.setValue(updatedAt, forKey: "updatedAt")
+        user.setValue(objectId, forKey: "objectId")
+        
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+        }
+        currentUser = user
+        println(user)
+        println(currentUser)
+        println("should be above")
+        
     }
     
     @IBAction func doPresentSignUp(sender: UIButton) {

@@ -176,15 +176,14 @@
 				3C6A87BD1B6FC5C70055A7A8 /* ViewController.swift */,
 				3C6A87BF1B6FC5C70055A7A8 /* Main.storyboard */,
 				3C35819E1B78047500BD1998 /* LoginViewController.swift */,
+				3C3581A41B7820CD00BD1998 /* HomeViewController.swift */,
 				3C35819C1B77FE9A00BD1998 /* SignUpViewController.swift */,
 				3CD969C21B6FE61E009574CB /* CurrentHuntViewController.swift */,
 				3CD969C41B6FE702009574CB /* ListHuntsViewController.swift */,
-				3C3581A41B7820CD00BD1998 /* HomeViewController.swift */,
 				3CF468431B72ABB70082D254 /* Keys.swift */,
 				3CD969C61B700448009574CB /* ScavengerHunt.swift */,
 				3C6A87C21B6FC5C70055A7A8 /* Images.xcassets */,
 				3C6A87C41B6FC5C70055A7A8 /* LaunchScreen.xib */,
-				3C6A87BA1B6FC5C70055A7A8 /* ScavengerIOS.xcdatamodeld */,
 				3C6A87B61B6FC5C70055A7A8 /* Supporting Files */,
 			);
 			path = ScavengerIOS;
@@ -193,6 +192,7 @@
 		3C6A87B61B6FC5C70055A7A8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3C6A87BA1B6FC5C70055A7A8 /* ScavengerIOS.xcdatamodeld */,
 				3C3581A11B7810F600BD1998 /* KeychainWrapper.h */,
 				3C3581A21B7810F600BD1998 /* KeychainWrapper.m */,
 				3C6A87B71B6FC5C70055A7A8 /* Info.plist */,

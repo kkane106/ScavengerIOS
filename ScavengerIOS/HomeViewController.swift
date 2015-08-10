@@ -8,21 +8,49 @@
 
 import UIKit
 import Parse
+import CoreData
 
 class HomeViewController: UIViewController {
-
-    var passedValue : PFUser?
     
     @IBOutlet weak var userLabel: UILabel!
+
+
+    
+    var currentUser : AnyObject?
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName: "User")
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: nil)
+        
+        if let results = fetchedResults {
+            currentUser = results
+        } else {
+            println("something went awry")
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let passedValue = passedValue {
-            userLabel.text = passedValue.email
-        } else {
-            userLabel.text = "nothing"
-        }
-        // Do any additional setup after loading the view.
+        println("LOOK HERE \(currentUser)")
+        
+//        var query = PFQuery(className: "ScavengerHunt")
+//        query.whereKey("createdBy", equalTo: "kkane")
+//        query.findObjectsInBackgroundWithBlock {
+//            (result, error) -> Void in
+//            if error != nil {
+//                println("soemthign went wrong")
+//                println(error)
+//                println(self.currentUser)
+//            } else {
+//                println(result)
+//            }
+//        }
     }
 
     
