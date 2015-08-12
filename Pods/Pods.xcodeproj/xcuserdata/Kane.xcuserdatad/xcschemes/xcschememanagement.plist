@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-ScavengerIOS-pop.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ScavengerIOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>07E7DAEFEF648C6512D49222</key>
+		<key>1B06B035CD9FFB0C3EE8CBBC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7C745D156408B9F64DFCD00A</key>
+		<key>4E00760B6455A76895E3A5E4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8F1451A548D54EBFC6692B57</key>
+		<key>945B2EE5CB0920762229C983</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CFFF7692DA7AE5D061197ADA</key>
+		<key>C63744F86EDEFB29E584C914</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FCC1BE504F0AE421E8061701</key>
 		<dict>
 			<key>primary</key>
 			<true/>

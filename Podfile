@@ -8,6 +8,7 @@ target 'ScavengerIOS' do
     pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'ObjectMapper'
+    pod 'pop'
 
 end
 

@@ -10,6 +10,8 @@ import UIKit
 import MapKit
 import Parse
 import CoreLocation
+import Darwin // Math
+import Foundation
 
 class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var huntMap: MKMapView!
@@ -18,20 +20,61 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
     
     var passedValue : PFObject?
     let locationManager = CLLocationManager()
+    var objective : CLLocation?
+    
+    let π = M_PI
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
         
         
         setupMap()
     }
+    // Make this a struct
+    func toRadians(degrees: Double) -> Double {
+        let radians = ( degrees * π) / 180
+        return radians
+    }
+    // Make this a struct
+    func haversineFormula(lat1: Double, lat2: Double, lon1: Double, lon2: Double) -> Double  {
+        let R = 6371000.0 // Meters
+        let lat1R = toRadians(lat1)
+        let lat2R = toRadians(lat2)
+        let latDiff = toRadians(lat2 - lat1)
+        let lonDiff = toRadians(lon2 - lon1)
+        
+        var a = sin(latDiff/2) * sin(latDiff/2) + cos(lat1R) * cos(lat2R) * sin(lonDiff/2) * sin(lonDiff/2)
+        var c = 2 * atan2(sqrt(a), sqrt(1-a))
+        var d = R * c
+        
+        return d // In Meters
+    }
     
     @IBAction func doFindMe(sender: UIBarButtonItem) {
-        println("THIS: \(huntMap.userLocation.location?.coordinate)")
+        var userLocation = huntMap.userLocation.location?.coordinate
+        println("User Location: \(userLocation)")
         zoomToCurrentUserLocationInMap(huntMap)
+        let currentLat = userLocation!.latitude
+        let currentLong = userLocation!.longitude
+        if let objective = objective {
+            
+            let distance = haversineFormula(currentLat, lat2: objective.coordinate.latitude, lon1: currentLong, lon2: objective.coordinate.longitude)
+            println(distance)
+            
+            if distance < 30 {
+
+                var alert = UIAlertView()
+                alert.title = "You're there"
+                alert.addButtonWithTitle("Cool!")
+                alert.show()
+                return
+            
+            }
+        }
     }
     
     func zoomToCurrentUserLocationInMap(mapView: MKMapView) {
@@ -46,11 +89,6 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
         
         let regionRadius: CLLocationDistance = 1000
         
-        func centerMapOnLocation(location : CLLocation) {
-            let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
-            huntMap.setRegion(coordinateRegion, animated: true)
-        }
-        
         if let passedValue = passedValue {
             getLocationsForHunt(passedValue, completion: { (locations) -> () in
                 if locations.count == 0 {
@@ -61,27 +99,18 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
                 let lat = locations[0]["coordinate"]!.latitude
                 let long = locations[0]["coordinate"]!.longitude
                 let initialLocation = CLLocation(latitude: lat, longitude: long)
-                let coordinateRegion = MKCoordinateRegionMakeWithDistance(initialLocation.coordinate, regionRadius * 2.0, regionRadius * 2.0)
-                self.huntMap.setRegion(coordinateRegion, animated: true)
+//                let coordinateRegion = MKCoordinateRegionMakeWithDistance(initialLocation.coordinate, regionRadius, regionRadius)
+//                self.huntMap.setRegion(coordinateRegion, animated: true)
                 self.clueTextView.text = locations[0]["clue"] as! String
                 
+                self.objective = initialLocation
                 
                 
-                
+
             })
 
-//            let lat = passedValue["location"]!.latitude
-//            let long = passedValue["location"]!.longitude
-//            let initialLocation = CLLocation(latitude: lat, longitude: long)
-//            println(passedValue["name"])
-//            println(passedValue["clue"])
-//            centerMapOnLocation(initialLocation)
-//            clueTextView.text = passedValue["clue"] as! String
-
-            
         }else {
-            let initialLocation = CLLocation(latitude: 38.9047, longitude: -77.0164)
-            centerMapOnLocation(initialLocation)
+            println("not centered on first location")
         }
         
     }
