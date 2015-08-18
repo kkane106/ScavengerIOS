@@ -18,20 +18,23 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var clueTextView: UITextView!
     
-    var passedValue : PFObject?
+    var passedLocations : [PFObject]?
     let locationManager = CLLocationManager()
     var objective : CLLocation?
     
     let π = M_PI
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
-        
-        
+        findUser()
         setupMap()
     }
     // Make this a struct
@@ -55,8 +58,22 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func doFindMe(sender: UIBarButtonItem) {
+        checkLocation()
+    }
+    
+    func findUser() {
+        var userLocation = locationManager.location
+        if let userLocation = userLocation {
+            println(userLocation)
+        }
+        let coordinate = userLocation.coordinate
+        let region = MKCoordinateRegionMakeWithDistance(coordinate, 2000, 2000)
+        huntMap.setRegion(region, animated: true)
+    }
+    
+    func checkLocation() {
         var userLocation = huntMap.userLocation.location?.coordinate
-        println("User Location: \(userLocation)")
+        println("User Location: \(userLocation!)")
         zoomToCurrentUserLocationInMap(huntMap)
         let currentLat = userLocation!.latitude
         let currentLong = userLocation!.longitude
@@ -66,20 +83,21 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
             println(distance)
             
             if distance < 30 {
-
+                
                 var alert = UIAlertView()
                 alert.title = "You're there"
                 alert.addButtonWithTitle("Cool!")
                 alert.show()
                 return
-            
+                
             }
         }
+
     }
     
     func zoomToCurrentUserLocationInMap(mapView: MKMapView) {
         if let coordinate = mapView.userLocation.location?.coordinate {
-            let region = MKCoordinateRegionMakeWithDistance(coordinate, 5000, 5000)
+            let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
             mapView.setRegion(region, animated: true)
         }
     }
@@ -88,50 +106,32 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
         // CHANGE THIS TO USE CORE LOCATION OF CURRENT LOCATION OF USER
         
         let regionRadius: CLLocationDistance = 1000
-        
-        if let passedValue = passedValue {
-            getLocationsForHunt(passedValue, completion: { (locations) -> () in
+        if let passedLocations = passedLocations {
+            didReceiveLocations(passedLocations, completion: { (locations) -> () in
                 if locations.count == 0 {
                     println("no locations were returned")
                     return
                 }
-                
                 let lat = locations[0]["coordinate"]!.latitude
                 let long = locations[0]["coordinate"]!.longitude
                 let initialLocation = CLLocation(latitude: lat, longitude: long)
-//                let coordinateRegion = MKCoordinateRegionMakeWithDistance(initialLocation.coordinate, regionRadius, regionRadius)
-//                self.huntMap.setRegion(coordinateRegion, animated: true)
                 self.clueTextView.text = locations[0]["clue"] as! String
                 
                 self.objective = initialLocation
-                
-                
 
             })
-
-        }else {
+        } else {
             println("not centered on first location")
         }
-        
     }
     
-    func getLocationsForHunt(hunt : PFObject, completion: (locations : [PFObject]) -> ()) {
-        let query = PFQuery(className: "Location")
-        query.whereKey("ScavengerHuntId", equalTo: hunt)
-        query.findObjectsInBackgroundWithBlock({
-            (results, error : NSError?) -> Void in
-            if error != nil {
-                if let error = error {
-                    println("error")
-                }
-            }
-            println(results)
-            if let results = results {
-                completion(locations: results as! [PFObject])
-            }
-        })
+    func didReceiveLocations(passedLocations : [PFObject], completion : (locations : [PFObject]) -> ()) {
+        let receivedLocations = passedLocations
+        completion(locations: receivedLocations)
         
     }
+
+    
 }
 
 //        getSavedData { (data) -> () in

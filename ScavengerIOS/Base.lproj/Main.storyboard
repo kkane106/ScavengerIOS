@@ -387,7 +387,7 @@
                                         <connections>
                                             <outlet property="scavengerHuntName" destination="Z9O-0t-bAF" id="flv-ru-kMn"/>
                                             <outlet property="scavengerHuntProximity" destination="GC9-Lj-FOY" id="Rto-qV-9Kc"/>
-                                            <segue destination="djc-MG-s9L" kind="presentation" identifier="showHuntDescription" id="r0u-Ld-SLE"/>
+                                            <segue destination="wWX-bo-SGc" kind="show" identifier="showHuntDescription" id="dDG-z0-mFt"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -412,6 +412,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DzZ-UZ-oAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3970" y="415"/>
+        </scene>
+        <!--Hunt Description View Controller-->
+        <scene sceneID="1P4-fw-Djl">
+            <objects>
+                <viewController id="wWX-bo-SGc" customClass="HuntDescriptionViewController" customModule="ScavengerIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ypj-qx-iev"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Vh-0M-Caj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Bb-IH-b93">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsc-WQ-tCV">
+                                <rect key="frame" x="16" y="20" width="35" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissDescription:" destination="wWX-bo-SGc" eventType="touchUpInside" id="uyU-d1-LN6"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOK-G5-fWP">
+                                <rect key="frame" x="277" y="82" width="46" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVN-DJ-Jvo">
+                                <rect key="frame" x="258" y="273" width="88" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Locations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbx-Ep-8dx">
+                                <rect key="frame" x="263" y="190" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BcU-C4-ZaZ">
+                                <rect key="frame" x="277" y="353" width="44" height="30"/>
+                                <state key="normal" title="Begin!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="beginScavengerHunt:" destination="wWX-bo-SGc" eventType="touchUpInside" id="P5v-zc-eww"/>
+                                    <segue destination="QU6-gy-RfP" kind="show" identifier="showCurrentHunt" id="PPa-jX-HLs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="YVN-DJ-Jvo" id="hES-ed-IZa"/>
+                        <outlet property="numberOfLocationsLabel" destination="vbx-Ep-8dx" id="nR6-Yb-0QG"/>
+                        <outlet property="scavengerHuntNameLabel" destination="nOK-G5-fWP" id="QXc-Fl-s6Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GaZ-ss-6jS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4917" y="415"/>
         </scene>
         <!--Current Hunt VC-->
         <scene sceneID="Zhg-0h-rAt">
@@ -488,41 +550,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTG-po-kaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5441" y="1159"/>
-        </scene>
-        <!--Hunt Description View Controller-->
-        <scene sceneID="4je-6r-xot">
-            <objects>
-                <viewController id="djc-MG-s9L" customClass="HuntDescriptionViewController" customModule="ScavengerIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QD3-k4-TOT"/>
-                        <viewControllerLayoutGuide type="bottom" id="qmZ-LG-lOl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xkV-3o-c1p">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NKY-te-MRP">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="Name" id="5kb-7j-1mO">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="lEE-gB-GPo">
-                                            <connections>
-                                                <action selector="dismissDescription:" destination="djc-MG-s9L" id="XYX-Z1-yO1"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="scavengerHuntNameLabel" destination="5kb-7j-1mO" id="xWH-IY-3HS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xp1-WJ-xwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4680" y="414"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hUw-qo-OCt">

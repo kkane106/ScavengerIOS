@@ -15,7 +15,6 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var scavengerHuntsTableView: UITableView!
 
     let locManager = CLLocationManager()
-    var currentLocation : CLLocationCoordinate2D?
     let cellID = "ScavengerHuntCell"
     var scavengerHuntToPass : PFObject?
     
@@ -45,29 +44,50 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
 
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        var locValue: CLLocationCoordinate2D = manager.location.coordinate
-        println("locations = \(locValue.latitude) \(locValue.longitude)")
-        self.currentLocation = locValue
-        if self.currentLocation != nil {
-            self.locManager.stopUpdatingLocation()
-            
-        }
-    }
+
+    
+//    func updateScavengerHunts(sender: UIRefreshControl) {
+//        var query = PFQuery(className: "ScavengerHunt")
+//        query.orderByDescending("updatedAt")
+//        query.findObjectsInBackgroundWithBlock {
+//            (response, error) -> Void in
+//            if error != nil {
+//                println("didn't work")
+//                return
+//            }
+//            
+//            if let response = response {
+//                self.scavengerHunts = response as! [PFObject]
+//                println("RESPONSE AS LIST OF SCAVENGER HUNTS: \(response)")
+//            }
+//            sender.endRefreshing()
+//            self.scavengerHuntsTableView.reloadData()
+//        }
+//    }
+    
     
     func updateScavengerHunts(sender: UIRefreshControl) {
-        var query = PFQuery(className: "ScavengerHunt")
-        query.orderByDescending("updatedAt")
-        query.findObjectsInBackgroundWithBlock {
-            (response, error) -> Void in
+        PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint : PFGeoPoint?, error: NSError?) -> Void in
             if error != nil {
-                println("didn't work")
-                return
-            }
-            
-            if let response = response {
-                self.scavengerHunts = response as! [PFObject]
-                println("RESPONSE AS LIST OF SCAVENGER HUNTS: \(response)")
+                println("no location found")
+            } else {
+                if let geoPoint = geoPoint {
+                    let userGeoPoint = geoPoint
+                    var query = PFQuery(className: "ScavengerHunt")
+                    query.whereKey("startingPoint", nearGeoPoint: userGeoPoint, withinMiles: 10.0)
+                    query.limit = 20
+                    let placesObjects = query.findObjectsInBackgroundWithBlock({ (response, error) -> Void in
+                        if error != nil {
+                            println("no location objects returned")
+                        } else {
+                            if let response = response {
+                                println(response)
+                                self.scavengerHunts = response as! [PFObject]
+                            }
+                            
+                        }
+                    })
+                }
             }
             sender.endRefreshing()
             self.scavengerHuntsTableView.reloadData()
@@ -101,6 +121,7 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
             var destinationVC = segue.destinationViewController as! HuntDescriptionViewController
             if let scavengerHuntToPass = scavengerHuntToPass {
                 destinationVC.receivedScavengerHunt = scavengerHuntToPass
+                
             }
         }
     }
