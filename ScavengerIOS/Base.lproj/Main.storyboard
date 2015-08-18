@@ -387,6 +387,7 @@
                                         <connections>
                                             <outlet property="scavengerHuntName" destination="Z9O-0t-bAF" id="flv-ru-kMn"/>
                                             <outlet property="scavengerHuntProximity" destination="GC9-Lj-FOY" id="Rto-qV-9Kc"/>
+                                            <segue destination="djc-MG-s9L" kind="presentation" identifier="showHuntDesctiption" id="r0u-Ld-SLE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
