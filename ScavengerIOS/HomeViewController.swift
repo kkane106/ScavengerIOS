@@ -30,6 +30,13 @@ class HomeViewController: UIViewController {
 
     }
     
+    @IBAction func doSignOut(sender: UIBarButtonItem) {
+        PFUser.logOut()
+        println("current user: \(PFUser.currentUser())")
+        presentLoginVC()
+        
+    }
+    
 //    func getSavedData(completion: (data: PFObject) -> ()) {
 //        let query = PFQuery(className: "ScavengerHunt")
 //        let results = query.getFirstObject()
@@ -38,5 +45,20 @@ class HomeViewController: UIViewController {
 //        }
 //    }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "logoutSegueView") {
+            var navigationVC = segue.destinationViewController as! UINavigationController
+            var loginVC = navigationVC.topViewController
+            
+        }
+    }
+    
+    func presentLoginVC() {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let vc : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Login") as! LoginViewController
+        let navigationVC = UINavigationController(rootViewController: vc)
+        self.presentViewController(navigationVC, animated: true, completion: nil)
+    }
+    
     
 }

@@ -32,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Initialize Parse.
         Parse.setApplicationId(Keys.parseApplicationId, clientKey: Keys.parseClientId)
         
+        // Enable revocable Session Tokens
+        
+        
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         

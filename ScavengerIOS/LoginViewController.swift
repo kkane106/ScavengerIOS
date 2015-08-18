@@ -33,6 +33,8 @@ class LoginViewController: UIViewController {
 
         }
         println("just checked login")
+        var currentUser = PFUser.currentUser()
+        println(currentUser)
     }
     
     override func viewDidLoad() {
@@ -113,34 +115,35 @@ class LoginViewController: UIViewController {
     func checkUserLogin(completion : (parseUser: PFUser) -> ()) {
         let passwordKeychain = MyKeyChainWrapper.myObjectForKey("v_Data") as? String
         let usernameDefault = defaults.valueForKey("username") as? String
-
-        if let savedPW = passwordKeychain {
-            println(savedPW)
-            if let savedUserName = usernameDefault {
-                println(savedUserName)
-                PFUser.logInWithUsernameInBackground(savedUserName, password: savedPW, block: {
-                    (user, error) -> Void in
-                    if error != nil {
-                        if let error = error {
-                            println("User not found")
-                            println(error)
-                            
+        if PFUser.currentUser() != nil {
+            if let savedPW = passwordKeychain {
+                println(savedPW)
+                if let savedUserName = usernameDefault {
+                    println(savedUserName)
+                    PFUser.logInWithUsernameInBackground(savedUserName, password: savedPW, block: {
+                        (user, error) -> Void in
+                        if error != nil {
+                            if let error = error {
+                                println("User not found")
+                                println(error)
+                                
+                            }
                         }
-                    }
-                    
-                    if let user = user {
-                        completion(parseUser: user)
-                    }
-                    
-                })
+                        
+                        if let user = user {
+                            completion(parseUser: user)
+                        }
+                        
+                    })
+                }
             }
         }
-
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "loginSegueView") {
-            var destinationVC = segue.destinationViewController as! HomeViewController
+            var navigationVC = segue.destinationViewController as! UINavigationController
+            var homeVC = navigationVC.topViewController
             
         }
     }
