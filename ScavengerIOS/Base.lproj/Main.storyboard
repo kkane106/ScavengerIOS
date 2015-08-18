@@ -488,10 +488,10 @@
             </objects>
             <point key="canvasLocation" x="5441" y="1159"/>
         </scene>
-        <!--View Controller-->
+        <!--Hunt Description View Controller-->
         <scene sceneID="4je-6r-xot">
             <objects>
-                <viewController id="djc-MG-s9L" sceneMemberID="viewController">
+                <viewController id="djc-MG-s9L" customClass="HuntDescriptionViewController" customModule="ScavengerIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QD3-k4-TOT"/>
                         <viewControllerLayoutGuide type="bottom" id="qmZ-LG-lOl"/>

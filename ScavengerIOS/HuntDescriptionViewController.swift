@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import Parse
+import MapKit
+import CoreLocation
 
 class HuntDescriptionViewController: UIViewController {
+    
+    var receivedScavengerHunt : PFObject?
 
     override func viewDidLoad() {
         super.viewDidLoad()

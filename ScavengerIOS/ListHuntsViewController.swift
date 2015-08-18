@@ -98,10 +98,9 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "presentCurrentHunt") {
-            var navigationVC = segue.destinationViewController as! UINavigationController
-            var destinationVC = navigationVC.topViewController as! CurrentHuntViewController
+            var destinationVC = segue.destinationViewController as! HuntDescriptionViewController
             if let scavengerHuntToPass = scavengerHuntToPass {
-                destinationVC.passedValue = scavengerHuntToPass
+                destinationVC.receivedScavengerHunt = scavengerHuntToPass
             }
         }
     }
