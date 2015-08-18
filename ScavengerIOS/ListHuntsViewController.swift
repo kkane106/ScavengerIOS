@@ -17,12 +17,17 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
     let locManager = CLLocationManager()
     let cellID = "ScavengerHuntCell"
     var scavengerHuntToPass : PFObject?
+    var searchDistance : Float = 10.0
     
     var scavengerHunts = [PFObject]()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        updateScavengerHunts(UIRefreshControl())
+        updateScavengerHunts(searchDistance, completion: { (response) -> () in
+            self.scavengerHunts = response
+            self.scavengerHuntsTableView.reloadData()
+
+        })
     }
     
     override func viewDidLoad() {
@@ -66,7 +71,7 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
 //    }
     
     
-    func updateScavengerHunts(sender: UIRefreshControl) {
+    func updateScavengerHunts(radius : Float, completion : (response : [PFObject]) -> ()) {
         PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint : PFGeoPoint?, error: NSError?) -> Void in
             if error != nil {
                 println("no location found")
@@ -81,18 +86,17 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
                             println("no location objects returned")
                         } else {
                             if let response = response {
-                                println(response)
-                                self.scavengerHunts = response as! [PFObject]
+                                completion(response: response as! [PFObject])
+
                             }
                             
                         }
                     })
                 }
             }
-            sender.endRefreshing()
-            self.scavengerHuntsTableView.reloadData()
         }
     }
+
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as! ScavengerHuntTableViewCell
