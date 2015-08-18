@@ -97,7 +97,7 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "howHuntDescription") {
+        if (segue.identifier == "showHuntDescription") {
             var destinationVC = segue.destinationViewController as! HuntDescriptionViewController
             if let scavengerHuntToPass = scavengerHuntToPass {
                 destinationVC.receivedScavengerHunt = scavengerHuntToPass

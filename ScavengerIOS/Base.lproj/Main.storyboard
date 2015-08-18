@@ -387,7 +387,7 @@
                                         <connections>
                                             <outlet property="scavengerHuntName" destination="Z9O-0t-bAF" id="flv-ru-kMn"/>
                                             <outlet property="scavengerHuntProximity" destination="GC9-Lj-FOY" id="Rto-qV-9Kc"/>
-                                            <segue destination="djc-MG-s9L" kind="presentation" identifier="showHuntDesctiption" id="r0u-Ld-SLE"/>
+                                            <segue destination="djc-MG-s9L" kind="presentation" identifier="showHuntDescription" id="r0u-Ld-SLE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -500,8 +500,25 @@
                     <view key="view" contentMode="scaleToFill" id="xkV-3o-c1p">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NKY-te-MRP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Name" id="5kb-7j-1mO">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="lEE-gB-GPo">
+                                            <connections>
+                                                <action selector="dismissDescription:" destination="djc-MG-s9L" id="XYX-Z1-yO1"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="scavengerHuntNameLabel" destination="5kb-7j-1mO" id="xWH-IY-3HS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xp1-WJ-xwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

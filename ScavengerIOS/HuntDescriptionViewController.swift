@@ -12,6 +12,7 @@ import MapKit
 import CoreLocation
 
 class HuntDescriptionViewController: UIViewController {
+    @IBOutlet weak var scavengerHuntNameLabel: UINavigationItem!
     
     var receivedScavengerHunt : PFObject?
 
@@ -21,5 +22,10 @@ class HuntDescriptionViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func dismissDescription(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        println("dismissed description vc")
+        
+    }
 
 }
