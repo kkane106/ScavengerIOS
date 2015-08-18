@@ -27,7 +27,9 @@ class HuntDescriptionViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        
+    super.viewDidLoad()
+
 
     }
     @IBAction func dismissDescription(sender: UIButton) {
@@ -48,6 +50,20 @@ class HuntDescriptionViewController: UIViewController {
         }
     }
     @IBAction func beginScavengerHunt(sender: UIButton) {
+        var time = Time()
+        var newGame = PFObject(className: "completedHunts")
+        newGame["startTime"] = time.now()
+        newGame["PlayerId"] = PFUser.currentUser()
+        newGame["ScavengerHuntId"] = receivedScavengerHunt!
+        newGame["totalLocations"] = locationsForHunt!.count
+        newGame.saveInBackgroundWithBlock { (success, error: NSError?) -> Void in
+            if error != nil {
+                println(error)
+            } else {
+                println("success")
+            }
+        }
+        
         performSegueWithIdentifier("showCurrentHunt", sender: self)
     }
     

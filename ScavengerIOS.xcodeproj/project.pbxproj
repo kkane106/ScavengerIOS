@@ -38,6 +38,7 @@
 		3C9D17361B728FB6005F494F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9D17351B728FB6005F494F /* libsqlite3.dylib */; };
 		3C9D17381B729181005F494F /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9D17371B729181005F494F /* Accounts.framework */; };
 		3C9D173A1B729187005F494F /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9D17391B729187005F494F /* Social.framework */; };
+		3CC4D8EA1B83E4290096E87C /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC4D8E91B83E4290096E87C /* Time.swift */; };
 		3CD969C31B6FE61E009574CB /* CurrentHuntViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD969C21B6FE61E009574CB /* CurrentHuntViewController.swift */; };
 		3CD969C51B6FE702009574CB /* ListHuntsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD969C41B6FE702009574CB /* ListHuntsViewController.swift */; };
 		3CD969C71B700448009574CB /* ScavengerHunt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD969C61B700448009574CB /* ScavengerHunt.swift */; };
@@ -92,6 +93,8 @@
 		3C9D17351B728FB6005F494F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		3C9D17371B729181005F494F /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		3C9D17391B729187005F494F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		3CC4D8E91B83E4290096E87C /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		3CC4D8EB1B83E4FF0096E87C /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		3CD969C21B6FE61E009574CB /* CurrentHuntViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentHuntViewController.swift; sourceTree = "<group>"; };
 		3CD969C41B6FE702009574CB /* ListHuntsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListHuntsViewController.swift; sourceTree = "<group>"; };
 		3CD969C61B700448009574CB /* ScavengerHunt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScavengerHunt.swift; sourceTree = "<group>"; };
@@ -183,6 +186,8 @@
 				3C6A87B81B6FC5C70055A7A8 /* AppDelegate.swift */,
 				3C6A87BD1B6FC5C70055A7A8 /* ViewController.swift */,
 				3C2A14831B839801002F9F24 /* HuntDescriptionViewController.swift */,
+				3CC4D8E91B83E4290096E87C /* Time.swift */,
+				3CC4D8EB1B83E4FF0096E87C /* MyPlayground.playground */,
 				3C6A87BF1B6FC5C70055A7A8 /* Main.storyboard */,
 				3C2A14811B838C50002F9F24 /* ScavengerHuntTableViewCell.swift */,
 				3C35819E1B78047500BD1998 /* LoginViewController.swift */,
@@ -394,6 +399,7 @@
 				3C35819F1B78047500BD1998 /* LoginViewController.swift in Sources */,
 				3C2A14841B839801002F9F24 /* HuntDescriptionViewController.swift in Sources */,
 				3C2A14821B838C50002F9F24 /* ScavengerHuntTableViewCell.swift in Sources */,
+				3CC4D8EA1B83E4290096E87C /* Time.swift in Sources */,
 				3C6A87BE1B6FC5C70055A7A8 /* ViewController.swift in Sources */,
 				3CF468441B72ABB70082D254 /* Keys.swift in Sources */,
 				3C35819D1B77FE9A00BD1998 /* SignUpViewController.swift in Sources */,

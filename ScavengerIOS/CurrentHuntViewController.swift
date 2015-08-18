@@ -103,9 +103,6 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func setupMap() {
-        // CHANGE THIS TO USE CORE LOCATION OF CURRENT LOCATION OF USER
-        
-        let regionRadius: CLLocationDistance = 1000
         if let passedLocations = passedLocations {
             didReceiveLocations(passedLocations, completion: { (locations) -> () in
                 if locations.count == 0 {
