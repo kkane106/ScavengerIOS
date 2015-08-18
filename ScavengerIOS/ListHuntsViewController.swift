@@ -8,12 +8,14 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 import Parse
 
-class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     @IBOutlet weak var scavengerHuntsTableView: UITableView!
 
+    let locManager = CLLocationManager()
+    var currentLocation : CLLocationCoordinate2D?
     let cellID = "ScavengerHuntCell"
     var scavengerHuntToPass : PFObject?
     
@@ -26,13 +28,31 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if (CLLocationManager.locationServicesEnabled())
+        {
+            locManager.delegate = self
+            locManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locManager.requestAlwaysAuthorization()
+            locManager.startUpdatingLocation()
+            
+        }
+        
+        
         scavengerHuntsTableView.delegate = self
         scavengerHuntsTableView.dataSource = self
-        scavengerHuntsTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellID)
-        
         scavengerHuntsTableView.reloadData()
 
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        var locValue: CLLocationCoordinate2D = manager.location.coordinate
+        println("locations = \(locValue.latitude) \(locValue.longitude)")
+        self.currentLocation = locValue
+        if self.currentLocation != nil {
+            self.locManager.stopUpdatingLocation()
+            
+        }
     }
     
     func updateScavengerHunts(sender: UIRefreshControl) {
@@ -55,10 +75,10 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as! ScavengerHuntTableViewCell
         let currentHunt = scavengerHunts[indexPath.row]
-        cell.textLabel?.text = currentHunt["name"] as! String
-        
+        cell.scavengerHuntName?.text = currentHunt["name"] as! String
+        cell.scavengerHuntProximity?.text = currentHunt["description"] as! String
         return cell
     }
     
@@ -85,4 +105,5 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
     }
+    
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		12D7C776B89CCB81A3A317F0 /* Pods_ScavengerIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1388B7E56845E347C7E5F593 /* Pods_ScavengerIOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3C2A14821B838C50002F9F24 /* ScavengerHuntTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A14811B838C50002F9F24 /* ScavengerHuntTableViewCell.swift */; };
+		3C2A14841B839801002F9F24 /* HuntDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A14831B839801002F9F24 /* HuntDescriptionViewController.swift */; };
 		3C3581901B75563000BD1998 /* Mapbox_iOS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C35818F1B75563000BD1998 /* Mapbox_iOS_SDK.framework */; };
 		3C35819D1B77FE9A00BD1998 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35819C1B77FE9A00BD1998 /* SignUpViewController.swift */; };
 		3C35819F1B78047500BD1998 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35819E1B78047500BD1998 /* LoginViewController.swift */; };
@@ -54,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		1388B7E56845E347C7E5F593 /* Pods_ScavengerIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScavengerIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C2A14811B838C50002F9F24 /* ScavengerHuntTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScavengerHuntTableViewCell.swift; sourceTree = "<group>"; };
+		3C2A14831B839801002F9F24 /* HuntDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HuntDescriptionViewController.swift; sourceTree = "<group>"; };
 		3C35818F1B75563000BD1998 /* Mapbox_iOS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox_iOS_SDK.framework; path = "Pods/../build/Debug-iphoneos/Pods-ScavengerIOS/Mapbox_iOS_SDK.framework"; sourceTree = "<group>"; };
 		3C35819C1B77FE9A00BD1998 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3C35819E1B78047500BD1998 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -178,7 +182,9 @@
 			children = (
 				3C6A87B81B6FC5C70055A7A8 /* AppDelegate.swift */,
 				3C6A87BD1B6FC5C70055A7A8 /* ViewController.swift */,
+				3C2A14831B839801002F9F24 /* HuntDescriptionViewController.swift */,
 				3C6A87BF1B6FC5C70055A7A8 /* Main.storyboard */,
+				3C2A14811B838C50002F9F24 /* ScavengerHuntTableViewCell.swift */,
 				3C35819E1B78047500BD1998 /* LoginViewController.swift */,
 				3C3581A41B7820CD00BD1998 /* HomeViewController.swift */,
 				3C35819C1B77FE9A00BD1998 /* SignUpViewController.swift */,
@@ -386,6 +392,8 @@
 			files = (
 				3C3581AA1B791FE300BD1998 /* User.swift in Sources */,
 				3C35819F1B78047500BD1998 /* LoginViewController.swift in Sources */,
+				3C2A14841B839801002F9F24 /* HuntDescriptionViewController.swift in Sources */,
+				3C2A14821B838C50002F9F24 /* ScavengerHuntTableViewCell.swift in Sources */,
 				3C6A87BE1B6FC5C70055A7A8 /* ViewController.swift in Sources */,
 				3CF468441B72ABB70082D254 /* Keys.swift in Sources */,
 				3C35819D1B77FE9A00BD1998 /* SignUpViewController.swift in Sources */,

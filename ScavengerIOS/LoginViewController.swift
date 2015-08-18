@@ -43,6 +43,7 @@ class LoginViewController: UIViewController {
 
     }
     
+    
     @IBAction func doVerifyLogin(sender: UIButton) {
         if (usernameTextField.text == "" || passwordTextField.text == "") {
             var alert = UIAlertView()
