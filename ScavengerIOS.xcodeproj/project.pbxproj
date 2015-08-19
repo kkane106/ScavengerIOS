@@ -196,7 +196,6 @@
 				3CE292FF1B85014400BF8D8A /* ForgotPasswordViewController.swift */,
 				3CC4D8EB1B83E4FF0096E87C /* MyPlayground.playground */,
 				3C6A87BF1B6FC5C70055A7A8 /* Main.storyboard */,
-				3CE292FB1B84E5AE00BF8D8A /* SwiftColors.swift */,
 				3C2A14811B838C50002F9F24 /* ScavengerHuntTableViewCell.swift */,
 				3C35819E1B78047500BD1998 /* LoginViewController.swift */,
 				3C3581A41B7820CD00BD1998 /* HomeViewController.swift */,
@@ -213,6 +212,7 @@
 		3C6A87B61B6FC5C70055A7A8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3CE292FB1B84E5AE00BF8D8A /* SwiftColors.swift */,
 				3CD969C61B700448009574CB /* ScavengerHunt.swift */,
 				3C3581A91B791FE300BD1998 /* User.swift */,
 				3C3581A71B79185800BD1998 /* Location.swift */,
