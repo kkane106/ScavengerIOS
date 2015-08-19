@@ -56,8 +56,7 @@ class HomeViewController: UIViewController {
     func presentLoginVC() {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         let vc : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Login") as! LoginViewController
-        let navigationVC = UINavigationController(rootViewController: vc)
-        self.presentViewController(navigationVC, animated: true, completion: nil)
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     @IBAction func presentPastHunts(sender: UIButton) {

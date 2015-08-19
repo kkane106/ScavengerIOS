@@ -13,7 +13,6 @@ import Parse
 class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
     
     let MyKeyChainWrapper = KeychainWrapper()
@@ -48,7 +47,10 @@ class SignUpViewController: UIViewController {
         user.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             if let error = error {
                 if let error = error.userInfo {
-                self.messageLabel.text = error["error"] as! String
+                    var alert = UIAlertView()
+                    alert.title = error["error"] as! String
+                    alert.addButtonWithTitle("Try again")
+                    alert.show()
                 }
             }
             self.userLogin()
@@ -60,15 +62,15 @@ class SignUpViewController: UIViewController {
             (user: PFUser?, error: NSError?) -> Void in
             if error != nil {
                 if let error = error {
-                    self.messageLabel.text = "NO record found"
+                    var alert = UIAlertView()
+                    alert.title = "No record found"
+                    alert.addButtonWithTitle("Try again")
+                    alert.show()
                     println(error)
                 }
             } else {
                 println("IS it this one? \(user)")
                 if let user = user {
-                    // If user record is returned
-                    self.messageLabel.text = "Record found"
-                    
                     // Look in UserDefaults to see if there is a loginKey
                     let hasLoginKey = self.defaults.boolForKey("hasLoginKey")
                     // If not, set the value of "username" to the current username in UserDefaults

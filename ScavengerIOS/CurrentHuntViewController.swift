@@ -12,6 +12,7 @@ import Parse
 import CoreLocation
 import Darwin // Math
 import Foundation
+import AVFoundation
 
 class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var huntMap: MKMapView!
@@ -40,7 +41,9 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
         findUser()
         setupMap(locationCounter)
+        
     }
+    
 
     func toRadians(degrees: Double) -> Double {
         let radians = ( degrees * π) / 180

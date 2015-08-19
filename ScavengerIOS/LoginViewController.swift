@@ -12,10 +12,12 @@ import Parse
 import CoreData
 
 class LoginViewController: UIViewController {
-    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     
+    @IBOutlet weak var forgotPasswordButton: UIButton!
+    @IBOutlet weak var scavengrLabel: UILabel!
+    @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
     let MyKeyChainWrapper = KeychainWrapper()
@@ -39,8 +41,58 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupButtons(loginButton)
+        setupButtons(signUpButton)
+        setupButtons(forgotPasswordButton)
+        setupTextFields(usernameTextField)
+        setupTextFields(passwordTextField)
+        setupLabel(scavengrLabel)
+        setupView()
 
-
+    }
+    
+    func setupLabel(label :UILabel) {
+        label.textColor = UIColor.whiteColor()
+        label.layer.shadowColor = UIColor.blackColor().CGColor
+        label.layer.shadowOffset = CGSizeMake(5, 5)
+        label.layer.shadowRadius = 5
+        label.layer.shadowOpacity = 0.3
+    }
+    
+    func setupButtons(button : UIButton) {
+        button.backgroundColor = UIColor.clearColor()
+        button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        button.layer.shadowColor = UIColor.blackColor().CGColor
+        button.layer.shadowOffset = CGSizeMake(2, 2)
+        button.layer.shadowRadius = 2
+        button.layer.shadowOpacity = 0.2
+    }
+    
+    func setupView() {
+        let firstColor : UIColor = UIColor(hexString: "#3AB34C")!
+        let secondColor : UIColor = UIColor(hexString: "#2D9F48")!
+        let gradient : CAGradientLayer = CAGradientLayer()
+        gradient.colors = [firstColor.CGColor, secondColor.CGColor]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x:0.3, y: 0.2)
+        gradient.endPoint = CGPoint(x:0.7, y: 0.7)
+        gradient.frame = CGRect(x:0.0, y: 0.0, width: self.view.frame.size.width, height : self.view.frame.size.height)
+        
+        self.view.layer.insertSublayer(gradient, atIndex: 0)
+    }
+    
+    func setupTextFields(textField : UITextField) {
+        textField.backgroundColor = UIColor(white: 1, alpha: 0.3)
+        textField.layer.shadowColor = UIColor.blackColor().CGColor
+        textField.layer.shadowOffset = CGSizeMake(2, 2)
+        textField.layer.shadowRadius = 2
+        textField.layer.shadowOpacity = 0.2
+        textField.borderStyle = UITextBorderStyle.None
+        
+        let paddingView = UIView(frame: CGRectMake(0,0,25,textField.frame.height))
+        textField.leftView = paddingView
+        textField.leftViewMode = UITextFieldViewMode.Always
+        
     }
     
     
@@ -64,14 +116,14 @@ class LoginViewController: UIViewController {
             (user: PFUser?, error: NSError?) -> Void in
             if error != nil {
                 if let error = error {
-                    self.messageLabel.text = "NO record found"
-                    println(error)
+                    var alert = UIAlertView()
+                    alert.title = "No record found"
+                    alert.addButtonWithTitle("Try again")
+                    alert.show()
                 }
             } else {
                 println("IS it this one? \(user)")
                 if let user = user {
-                    // If user record is returned
-                    self.messageLabel.text = "Record found"
                     
                     // Look in UserDefaults to see if there is a loginKey
                     let hasLoginKey = self.defaults.boolForKey("hasLoginKey")
