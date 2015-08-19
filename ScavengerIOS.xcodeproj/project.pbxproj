@@ -19,7 +19,6 @@
 		3C3581AA1B791FE300BD1998 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3581A91B791FE300BD1998 /* User.swift */; };
 		3C6A87B91B6FC5C70055A7A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A87B81B6FC5C70055A7A8 /* AppDelegate.swift */; };
 		3C6A87BC1B6FC5C70055A7A8 /* ScavengerIOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A87BA1B6FC5C70055A7A8 /* ScavengerIOS.xcdatamodeld */; };
-		3C6A87BE1B6FC5C70055A7A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A87BD1B6FC5C70055A7A8 /* ViewController.swift */; };
 		3C6A87C11B6FC5C70055A7A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C6A87BF1B6FC5C70055A7A8 /* Main.storyboard */; };
 		3C6A87C31B6FC5C70055A7A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C6A87C21B6FC5C70055A7A8 /* Images.xcassets */; };
 		3C6A87C61B6FC5C70055A7A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C6A87C41B6FC5C70055A7A8 /* LaunchScreen.xib */; };
@@ -76,7 +75,6 @@
 		3C6A87B71B6FC5C70055A7A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C6A87B81B6FC5C70055A7A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C6A87BB1B6FC5C70055A7A8 /* ScavengerIOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ScavengerIOS.xcdatamodel; sourceTree = "<group>"; };
-		3C6A87BD1B6FC5C70055A7A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3C6A87C01B6FC5C70055A7A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C6A87C21B6FC5C70055A7A8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3C6A87C51B6FC5C70055A7A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				3C6A87B81B6FC5C70055A7A8 /* AppDelegate.swift */,
-				3C6A87BD1B6FC5C70055A7A8 /* ViewController.swift */,
 				3CE292F91B84B95C00BF8D8A /* PastHuntsTableViewController.swift */,
 				3C2A14831B839801002F9F24 /* HuntDescriptionViewController.swift */,
 				3CE292F51B8433E800BF8D8A /* ScoresViewController.swift */,
@@ -412,7 +409,6 @@
 				3C2A14841B839801002F9F24 /* HuntDescriptionViewController.swift in Sources */,
 				3C2A14821B838C50002F9F24 /* ScavengerHuntTableViewCell.swift in Sources */,
 				3CC4D8EA1B83E4290096E87C /* Time.swift in Sources */,
-				3C6A87BE1B6FC5C70055A7A8 /* ViewController.swift in Sources */,
 				3CF468441B72ABB70082D254 /* Keys.swift in Sources */,
 				3C35819D1B77FE9A00BD1998 /* SignUpViewController.swift in Sources */,
 				3C6A87BC1B6FC5C70055A7A8 /* ScavengerIOS.xcdatamodeld in Sources */,
