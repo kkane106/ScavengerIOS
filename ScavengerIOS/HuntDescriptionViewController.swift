@@ -32,11 +32,6 @@ class HuntDescriptionViewController: UIViewController {
 
 
     }
-    @IBAction func dismissDescription(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        println("dismissed description vc")
-        
-    }
     
     func setupDescription() {
         if let receivedScavengerHunt = receivedScavengerHunt {

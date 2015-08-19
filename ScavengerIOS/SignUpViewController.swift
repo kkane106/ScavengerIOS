@@ -14,6 +14,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var scavengrLabel: UILabel!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var alreadyHaveAnAccountButton: UIButton!
     
     let MyKeyChainWrapper = KeychainWrapper()
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -21,19 +24,72 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        setupLabel(scavengrLabel)
+        setupButtons(signUpButton)
+        setupButtons(alreadyHaveAnAccountButton)
+        setupView()
+        setupTextFields(emailTextField)
+        setupTextFields(passwordTextField)
+        setupTextFields(usernameTextField)
+    }
+    
+    func setupLabel(label :UILabel) {
+        label.textColor = UIColor.whiteColor()
+        label.layer.shadowColor = UIColor.blackColor().CGColor
+        label.layer.shadowOffset = CGSizeMake(5, 5)
+        label.layer.shadowRadius = 5
+        label.layer.shadowOpacity = 0.3
+    }
+    
+    func setupButtons(button : UIButton) {
+        button.backgroundColor = UIColor.clearColor()
+        button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        button.layer.shadowColor = UIColor.blackColor().CGColor
+        button.layer.shadowOffset = CGSizeMake(2, 2)
+        button.layer.shadowRadius = 2
+        button.layer.shadowOpacity = 0.2
+    }
+    
+    func setupView() {
+        let firstColor : UIColor = UIColor(hexString: "#3AB34C")!
+        let secondColor : UIColor = UIColor(hexString: "#2D9F48")!
+        let gradient : CAGradientLayer = CAGradientLayer()
+        gradient.colors = [firstColor.CGColor, secondColor.CGColor]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x:0.3, y: 0.2)
+        gradient.endPoint = CGPoint(x:0.7, y: 0.7)
+        gradient.frame = CGRect(x:0.0, y: 0.0, width: self.view.frame.size.width, height : self.view.frame.size.height)
+        
+        self.view.layer.insertSublayer(gradient, atIndex: 0)
+    }
+    
+    func setupTextFields(textField : UITextField) {
+        textField.backgroundColor = UIColor(white: 1, alpha: 0.3)
+        textField.layer.shadowColor = UIColor.blackColor().CGColor
+        textField.layer.shadowOffset = CGSizeMake(2, 2)
+        textField.layer.shadowRadius = 2
+        textField.layer.shadowOpacity = 0.2
+        textField.borderStyle = UITextBorderStyle.None
+        
+        let paddingView = UIView(frame: CGRectMake(0,0,25,textField.frame.height))
+        textField.leftView = paddingView
+        textField.leftViewMode = UITextFieldViewMode.Always
+        
     }
     
     @IBAction func doVerifySignUp(sender: UIButton) {
         if emailTextField.text == "" {
             var alert = UIAlertView(title: "Invalid", message: "Please enter a valid email address", delegate: self, cancelButtonTitle: "Dismiss")
             alert.show()
+            return
         } else if count(passwordTextField.text.utf16) < 5 {
             var alert = UIAlertView(title: "Invalid", message: "Password must be longer than 5 characters", delegate: self, cancelButtonTitle: "Dismiss")
             alert.show()
+            return
         } else if count(usernameTextField.text.utf16) < 4 {
             var alert = UIAlertView(title: "Invalid", message: "Username must be longer than 4 characters", delegate: self, cancelButtonTitle: "Dismiss")
             alert.show()
+            return
         } else {
             userSignUp()
         }
@@ -85,7 +141,7 @@ class SignUpViewController: UIViewController {
                     self.defaults.setBool(true, forKey: "hasLoginKey")
                     self.defaults.synchronize()
                     
-                    self.performSegueWithIdentifier("signupViewSegue", sender: self)
+                    self.performSegueWithIdentifier("signUpSegue", sender: self)
                     
                 }
                 
@@ -94,9 +150,9 @@ class SignUpViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "signupSegueView") {
+        if (segue.identifier == "signUpSegue") {
             var navigationVC = segue.destinationViewController as! UINavigationController
-            var homeVC = navigationVC.topViewController
+            var homeVC = navigationVC.topViewController as! HomeViewController
             
         }
     }

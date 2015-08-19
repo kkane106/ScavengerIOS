@@ -138,8 +138,9 @@ class LoginViewController: UIViewController {
                     // Set "hasLoginKey" to true
                     self.defaults.setBool(true, forKey: "hasLoginKey")
                     self.defaults.synchronize()
-                    
+                    println("ABOUT TO SEGUE")
                     self.performSegueWithIdentifier("loginViewSegue", sender: self)
+
 
                 }
                 
@@ -194,9 +195,10 @@ class LoginViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "loginSegueView") {
+        if (segue.identifier == "loginViewSegue") {
+            println("inside the segue")
             var navigationVC = segue.destinationViewController as! UINavigationController
-            var homeVC = navigationVC.topViewController
+            var listVC = navigationVC.topViewController as! ListHuntsViewController
             
         }
     }
