@@ -95,14 +95,17 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
                     
                 } else {
                     var alert = UIAlertView()
-                    alert.title = "You're there"
-                    alert.addButtonWithTitle("Cool!")
-                    alert.show()
-                    println(locationCounter)
-                    
-                    ++self.locationCounter
-                    setupMap(self.locationCounter)
-                    return
+                    if let passedLocations = passedLocations {
+                        let task = passedLocations[locationCounter]["task"] as! String
+                        alert.title = "Task #\(locationCounter + 1):\n\(task)"
+                        alert.addButtonWithTitle("Done")
+                        alert.show()
+                        println(locationCounter)
+                        
+                        ++self.locationCounter
+                        setupMap(self.locationCounter)
+                        return
+                    }
                 }
                 
             }
@@ -116,8 +119,9 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
                 self.completedHunt = result
                 println("func checkCompletion finished updating CompletedHunt")
                 var alert = UIAlertView()
-                alert.title = "YOU DID IT!!!!!"
-                alert.addButtonWithTitle("Show me my time!")
+                let task = passedLocations[self.locationCounter]["task"] as! String
+                alert.title = "YOU DID IT!!!!!\nFinal Task:\n\(task)"
+                alert.addButtonWithTitle("See my time!")
                 alert.show()
                 self.performSegueWithIdentifier("showScoresSegue", sender: nil)
             })
