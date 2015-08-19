@@ -454,8 +454,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3s-an-kVv">
-                                <rect key="frame" x="16" y="209" width="568" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3s-an-kVv">
+                                <rect key="frame" x="16" y="241" width="568" height="30"/>
                                 <state key="normal" title="Profile">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -469,8 +469,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDa-46-vto">
-                                <rect key="frame" x="16" y="171" width="568" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDa-46-vto">
+                                <rect key="frame" x="16" y="239" width="568" height="30"/>
                                 <state key="normal" title="Select A Scavenger Hunt">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -640,7 +640,6 @@
                                         <connections>
                                             <outlet property="scavengerHuntName" destination="Z9O-0t-bAF" id="flv-ru-kMn"/>
                                             <outlet property="scavengerHuntProximity" destination="GC9-Lj-FOY" id="Rto-qV-9Kc"/>
-                                            <segue destination="wWX-bo-SGc" kind="show" identifier="showHuntDescription" id="dDG-z0-mFt"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -701,11 +700,12 @@
                         <outlet property="scavengerHuntsTableView" destination="cTi-Dk-5Zq" id="jUQ-di-iTA"/>
                         <outlet property="searchButton" destination="BL2-v4-RQe" id="xyA-UV-CSi"/>
                         <outlet property="searchTextField" destination="Fxb-d1-haI" id="zcp-4e-kdd"/>
+                        <segue destination="wWX-bo-SGc" kind="show" identifier="showHuntDescription" id="GJv-xl-cfI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DzZ-UZ-oAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4782" y="415"/>
+            <point key="canvasLocation" x="4974" y="421"/>
         </scene>
         <!--Hunt Description View Controller-->
         <scene sceneID="1P4-fw-Djl">
@@ -743,7 +743,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="beginScavengerHunt:" destination="wWX-bo-SGc" eventType="touchUpInside" id="P5v-zc-eww"/>
                                     <segue destination="QU6-gy-RfP" kind="show" identifier="showCurrentHunt" id="PPa-jX-HLs"/>
                                 </connections>
                             </button>
