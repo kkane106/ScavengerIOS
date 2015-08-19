@@ -194,7 +194,6 @@
 				3C2A14831B839801002F9F24 /* HuntDescriptionViewController.swift */,
 				3CE292F51B8433E800BF8D8A /* ScoresViewController.swift */,
 				3CE292FF1B85014400BF8D8A /* ForgotPasswordViewController.swift */,
-				3CC4D8EB1B83E4FF0096E87C /* MyPlayground.playground */,
 				3C6A87BF1B6FC5C70055A7A8 /* Main.storyboard */,
 				3C2A14811B838C50002F9F24 /* ScavengerHuntTableViewCell.swift */,
 				3C35819E1B78047500BD1998 /* LoginViewController.swift */,
@@ -202,8 +201,6 @@
 				3C35819C1B77FE9A00BD1998 /* SignUpViewController.swift */,
 				3CD969C21B6FE61E009574CB /* CurrentHuntViewController.swift */,
 				3CD969C41B6FE702009574CB /* ListHuntsViewController.swift */,
-				3C6A87C21B6FC5C70055A7A8 /* Images.xcassets */,
-				3C6A87C41B6FC5C70055A7A8 /* LaunchScreen.xib */,
 				3C6A87B61B6FC5C70055A7A8 /* Supporting Files */,
 			);
 			path = ScavengerIOS;
@@ -223,6 +220,9 @@
 				3C3581A21B7810F600BD1998 /* KeychainWrapper.m */,
 				3C6A87B71B6FC5C70055A7A8 /* Info.plist */,
 				3C3581A01B7810F400BD1998 /* ScavengerIOS-Bridging-Header.h */,
+				3C6A87C21B6FC5C70055A7A8 /* Images.xcassets */,
+				3C6A87C41B6FC5C70055A7A8 /* LaunchScreen.xib */,
+				3CC4D8EB1B83E4FF0096E87C /* MyPlayground.playground */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
