@@ -15,7 +15,8 @@ import Foundation
 
 class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     @IBOutlet weak var scavengerHuntsTableView: UITableView!
-    
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var searchTextField: UITextField!
     var currentGeoPoint : PFGeoPoint?
 
     let locManager = CLLocationManager()
@@ -27,18 +28,13 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var scavengerHunts = [PFObject]()
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         updateScavengerHunts(searchDistance, completion: { (response) -> () in
             self.scavengerHunts = response
             self.scavengerHuntsTableView.reloadData()
-
+            
         })
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
         if (CLLocationManager.locationServicesEnabled())
         {
             locManager.delegate = self
@@ -51,8 +47,6 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
         
         scavengerHuntsTableView.delegate = self
         scavengerHuntsTableView.dataSource = self
-        scavengerHuntsTableView.reloadData()
-
     }
     
     @IBAction func doSignOut(sender: UIBarButtonItem) {
@@ -60,6 +54,19 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
         println("current user: \(PFUser.currentUser())")
         presentLoginVC()
         
+    }
+    @IBAction func doSearchWithDistance(sender: UIButton) {
+        if self.searchTextField.text != "" {
+            println(self.searchDistance)
+            let userSearch : NSString = self.searchTextField.text as! NSString
+            self.searchDistance = userSearch.floatValue
+            println(self.searchDistance)
+            updateScavengerHunts(self.searchDistance, completion: { (response) -> () in
+                self.scavengerHunts = response
+                self.scavengerHuntsTableView.reloadData()
+                
+            })
+        }
     }
     
     func presentLoginVC() {

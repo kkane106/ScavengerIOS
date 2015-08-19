@@ -557,7 +557,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JMB-82-dyp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3291" y="1153"/>
+            <point key="canvasLocation" x="2969" y="1429"/>
         </scene>
         <!--Profile VC-->
         <scene sceneID="76a-jX-gdy">
@@ -658,6 +658,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="doSearchWithDistance:" destination="ng1-G1-C8h" eventType="touchUpInside" id="8n0-az-MfC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -696,6 +699,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="scavengerHuntsTableView" destination="cTi-Dk-5Zq" id="jUQ-di-iTA"/>
+                        <outlet property="searchButton" destination="BL2-v4-RQe" id="xyA-UV-CSi"/>
+                        <outlet property="searchTextField" destination="Fxb-d1-haI" id="zcp-4e-kdd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DzZ-UZ-oAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -899,12 +904,12 @@
                     </view>
                     <connections>
                         <outlet property="timeLabel" destination="ogg-Ua-ouB" id="W6H-ci-Vtj"/>
-                        <segue destination="muO-GJ-tjo" kind="show" identifier="segueToHome" id="YxS-H9-vwQ"/>
+                        <segue destination="BDR-yz-8cC" kind="show" identifier="segueToList" id="6gw-E8-E6m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7W-nP-xPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4680" y="1940"/>
+            <point key="canvasLocation" x="3866" y="1984"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hUw-qo-OCt">
@@ -963,6 +968,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="OjA-IK-9mC"/>
-        <segue reference="p4z-CH-Mjr"/>
+        <segue reference="6gw-E8-E6m"/>
     </inferredMetricsTieBreakers>
 </document>

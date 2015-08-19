@@ -39,12 +39,14 @@ class ScoresViewController: UIViewController {
         
     }
     @IBAction func returnToProfile(sender: UIButton) {
-        self.performSegueWithIdentifier("segueToHome", sender: self)
+        self.performSegueWithIdentifier("segueToList", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let navVC = segue.destinationViewController as! UINavigationController
-        let destinationVC = navVC.topViewController as! HomeViewController
+        if (segue.identifier == "showCurrentHunt") {
+            let navVC = segue.destinationViewController as! UINavigationController
+            let destinationVC = navVC.topViewController as! ListHuntsViewController
+        }
     }
     
 }

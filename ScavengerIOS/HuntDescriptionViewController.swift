@@ -21,15 +21,9 @@ class HuntDescriptionViewController: UIViewController {
     var receivedScavengerHunt : PFObject?
     var locationsForHunt : [PFObject]?
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        setupDescription()
-    }
-    
     override func viewDidLoad() {
-        
-    super.viewDidLoad()
-
+        super.viewDidLoad()
+        setupDescription()
 
     }
     
