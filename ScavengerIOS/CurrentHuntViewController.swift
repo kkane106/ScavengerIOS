@@ -88,14 +88,18 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
             
             if distance < 3000 {
                 
-                var alert = UIAlertView()
-                alert.title = "You're there"
-                alert.addButtonWithTitle("Cool!")
-                alert.show()
-                println(locationCounter)
+
                 if locationCounter >= (passedLocations!.count - 1) {
+                    
                     checkCompletion()
+                    
                 } else {
+                    var alert = UIAlertView()
+                    alert.title = "You're there"
+                    alert.addButtonWithTitle("Cool!")
+                    alert.show()
+                    println(locationCounter)
+                    
                     ++self.locationCounter
                     setupMap(self.locationCounter)
                     return
@@ -110,9 +114,14 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
         if let passedLocations = passedLocations {
             updateCompletedHunt({ (result) -> () in
                 self.completedHunt = result
+                println("func checkCompletion finished updating CompletedHunt")
+                var alert = UIAlertView()
+                alert.title = "YOU DID IT!!!!!"
+                alert.addButtonWithTitle("Show me my time!")
+                alert.show()
+                self.performSegueWithIdentifier("showScoresSegue", sender: nil)
             })
-            var alert = UIAlertController()
-            alert.addAction(UIAlertAction(title: "Show me my stats!", style: .Default, handler: { action in self.performSegueWithIdentifier("showScoresSegue", sender: self) }))
+           
             
         } else {
             println("func checkCompletion error")
@@ -202,8 +211,7 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "showScoresSegue") {
-            var navVC = segue.destinationViewController as! UINavigationController
-            var destinationVC = navVC.topViewController as! CurrentHuntViewController
+            var destinationVC = segue.destinationViewController as! ScoresViewController
             if let completedHunt = completedHunt {
                 destinationVC.completedHunt = completedHunt
             }

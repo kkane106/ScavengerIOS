@@ -12,15 +12,10 @@ import Parse
 class ScoresViewController: UIViewController {
 
     var completedHunt : PFObject?
-
-    override func viewWillAppear(animated: Bool) {
-        viewWillAppear(true)
-        setupScoreBoard()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupScoreBoard()
     }
     
     func setupScoreBoard() {
