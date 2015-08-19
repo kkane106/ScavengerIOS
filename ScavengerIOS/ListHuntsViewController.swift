@@ -49,7 +49,18 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
 
     }
     
-
+    @IBAction func doSignOut(sender: UIBarButtonItem) {
+        PFUser.logOut()
+        println("current user: \(PFUser.currentUser())")
+        presentLoginVC()
+        
+    }
+    
+    func presentLoginVC() {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let vc : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Login") as! LoginViewController
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
     
 //    func updateScavengerHunts(sender: UIRefreshControl) {
 //        var query = PFQuery(className: "ScavengerHunt")
@@ -128,6 +139,13 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
                 
             }
         }
+        
+        if (segue.identifier == "logoutSegueView") {
+            var navigationVC = segue.destinationViewController as! UINavigationController
+            var loginVC = navigationVC.topViewController as! LoginViewController
+            
+        }
+
     }
     
 }

@@ -609,7 +609,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="VqJ-Ur-wUw">
-                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="Dyb-Ms-SyS"/>
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="Dyb-Ms-SyS">
+                            <connections>
+                                <action selector="doSignOut:" destination="ng1-G1-C8h" id="sgY-5a-WfR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="scavengerHuntsTableView" destination="cTi-Dk-5Zq" id="jUQ-di-iTA"/>
