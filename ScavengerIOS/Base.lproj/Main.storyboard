@@ -538,7 +538,7 @@
                     <navigationItem key="navigationItem" id="OCv-6b-UHU">
                         <barButtonItem key="leftBarButtonItem" title="Find Me" id="0v9-xz-kdS">
                             <connections>
-                                <action selector="doFindMe:" destination="f97-vy-nzy" id="HwK-dA-STH"/>
+                                <action selector="doCheckLocation:" destination="f97-vy-nzy" id="RoT-0e-lyK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

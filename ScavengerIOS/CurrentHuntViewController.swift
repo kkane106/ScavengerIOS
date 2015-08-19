@@ -18,6 +18,10 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var clueTextView: UITextView!
     
+    var locationCounter = 0
+    var skipCounter = 0
+    
+    var completedHunt : PFObject?
     var passedLocations : [PFObject]?
     let locationManager = CLLocationManager()
     var objective : CLLocation?
@@ -35,14 +39,14 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         findUser()
-        setupMap()
+        setupMap(locationCounter)
     }
-    // Make this a struct
+
     func toRadians(degrees: Double) -> Double {
         let radians = ( degrees * π) / 180
         return radians
     }
-    // Make this a struct
+
     func haversineFormula(lat1: Double, lat2: Double, lon1: Double, lon2: Double) -> Double  {
         let R = 6371000.0 // Meters
         let lat1R = toRadians(lat1)
@@ -57,7 +61,7 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
         return d // In Meters
     }
     
-    @IBAction func doFindMe(sender: UIBarButtonItem) {
+    @IBAction func doCheckLocation(sender: UIBarButtonItem) {
         checkLocation()
     }
     
@@ -82,17 +86,84 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
             let distance = haversineFormula(currentLat, lat2: objective.coordinate.latitude, lon1: currentLong, lon2: objective.coordinate.longitude)
             println(distance)
             
-            if distance < 30 {
+            if distance < 3000 {
                 
                 var alert = UIAlertView()
                 alert.title = "You're there"
                 alert.addButtonWithTitle("Cool!")
                 alert.show()
-                return
+                println(locationCounter)
+                if locationCounter >= (passedLocations!.count - 1) {
+                    checkCompletion()
+                } else {
+                    ++self.locationCounter
+                    setupMap(self.locationCounter)
+                    return
+                }
                 
             }
         }
 
+    }
+    
+    func checkCompletion() {
+        if let passedLocations = passedLocations {
+            updateCompletedHunt({ (result) -> () in
+                self.completedHunt = result
+            })
+            var alert = UIAlertController()
+            alert.addAction(UIAlertAction(title: "Show me my stats!", style: .Default, handler: { action in self.performSegueWithIdentifier("showScoresSegue", sender: self) }))
+            
+        } else {
+            println("func checkCompletion error")
+        }
+    }
+    
+    func updateCompletedHunt(completion : (result : PFObject) -> ()) {
+        var query = PFQuery(className: "completedHunts")
+        query.orderByDescending("createdAt")
+        query.getFirstObjectInBackgroundWithBlock { (response : AnyObject?, error : NSError?) -> Void in
+            if error != nil {
+                println(error)
+            } else {
+                if let response = response {
+                    println("This is the response from updateCompletedHunt: \n \(response)")
+                    var game = response as! PFObject
+                    var time = Time()
+                    game["endTime"] = time.now()
+                    if let startTime: AnyObject = game["startTime"] {
+                        let start = String(stringInterpolationSegment: startTime)
+                        println("This should be startTime: \(start)")
+                        if let endTime: AnyObject = game["endTime"] {
+                            let end = String(stringInterpolationSegment: game["endTime"])
+                            println("This should be endTime: \(end)")
+                            var totalTime = ElapsedTime(startTime: start, endTime: end )
+                            println("This should be totalTime: \(totalTime)")
+                            game["completeLocations"] = (self.locationCounter - self.skipCounter)
+                            game["totalTime"] = totalTime.convertStringsToSeconds()
+                            game["complete"] = self.didTheySkip()
+                            game.saveInBackgroundWithBlock { (success, error: NSError?) -> Void in
+                                if error != nil {
+                                    println(error)
+                                } else {
+                                    println("success")
+                                    completion(result: game)
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
+    }
+    
+    func didTheySkip() -> Bool {
+        if skipCounter > 0 {
+            return false
+        }
+       return true
     }
     
     func zoomToCurrentUserLocationInMap(mapView: MKMapView) {
@@ -102,17 +173,18 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func setupMap() {
+    func setupMap(counter : Int) {
         if let passedLocations = passedLocations {
             didReceiveLocations(passedLocations, completion: { (locations) -> () in
                 if locations.count == 0 {
                     println("no locations were returned")
                     return
                 }
-                let lat = locations[0]["coordinate"]!.latitude
-                let long = locations[0]["coordinate"]!.longitude
+                
+                let lat = locations[counter]["coordinate"]!.latitude
+                let long = locations[counter]["coordinate"]!.longitude
                 let initialLocation = CLLocation(latitude: lat, longitude: long)
-                self.clueTextView.text = locations[0]["clue"] as! String
+                self.clueTextView.text = locations[counter]["clue"] as! String
                 
                 self.objective = initialLocation
 
@@ -127,7 +199,17 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
         completion(locations: receivedLocations)
         
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "showScoresSegue") {
+            var navVC = segue.destinationViewController as! UINavigationController
+            var destinationVC = navVC.topViewController as! CurrentHuntViewController
+            if let completedHunt = completedHunt {
+                destinationVC.completedHunt = completedHunt
+            }
+        }
 
+    }
     
 }
 

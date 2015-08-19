@@ -20,3 +20,36 @@ struct Time {
         return utcTimeZoneStr
     }
 }
+
+struct ElapsedTime {
+    
+    var startTime : String
+    var endTime : String
+    
+    func convertStringsToSeconds() -> [Int] {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        let startDateStr = startTime
+        let startDate : NSDate = dateFormatter.dateFromString(startDateStr)!
+        
+        let endDateStr = endTime
+        let endDate : NSDate = dateFormatter.dateFromString(endDateStr)!
+        let dateComponents: NSDateComponents = NSCalendar(
+                calendarIdentifier: NSCalendarIdentifierGregorian)!.components(NSCalendarUnit.CalendarUnitSecond,
+                fromDate: startDate,
+                toDate: endDate,
+                options: NSCalendarOptions(0)
+        )
+        
+        let secondsElapsed = dateComponents.second
+        
+        var convertedTime = [Int]()
+        convertedTime.append(secondsElapsed % 60)
+        convertedTime.append((secondsElapsed / 60) % 60)
+        convertedTime.append((secondsElapsed / 3600) % 24)
+        convertedTime.append((secondsElapsed / 3600) / 24)
+        
+        return convertedTime
+    }
+}
