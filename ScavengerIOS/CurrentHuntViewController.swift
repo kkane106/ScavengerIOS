@@ -150,13 +150,16 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
                             println("This should be totalTime: \(totalTime)")
                             game["completeLocations"] = (self.passedLocations!.count - self.skipCounter)
                             game["totalTime"] = totalTime.convertStringsToSeconds()
-                            game["complete"] = self.didTheySkip()
-                            game.saveInBackgroundWithBlock { (success, error: NSError?) -> Void in
-                                if error != nil {
-                                    println(error)
-                                } else {
-                                    println("success")
-                                    completion(result: game)
+                            if let totalSeconds: AnyObject = game["totalTime"] {
+                                game["totalSeconds"] = totalSeconds[4]
+                                game["complete"] = self.didTheySkip()
+                                game.saveInBackgroundWithBlock { (success, error: NSError?) -> Void in
+                                    if error != nil {
+                                        println(error)
+                                    } else {
+                                        println("success")
+                                        completion(result: game)
+                                    }
                                 }
                             }
                         }

@@ -545,7 +545,7 @@
                     <connections>
                         <outlet property="clueTextView" destination="0Xx-wi-Tes" id="274-CI-H0h"/>
                         <outlet property="huntMap" destination="PGo-lF-MQQ" id="i7h-oR-lJs"/>
-                        <segue destination="X9I-Fj-q9X" kind="show" identifier="showScoresSegue" id="b2M-MT-CBM"/>
+                        <segue destination="X9I-Fj-q9X" kind="presentation" identifier="showScoresSegue" modalTransitionStyle="coverVertical" id="b2M-MT-CBM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTG-po-kaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -563,8 +563,19 @@
                     <view key="view" contentMode="scaleToFill" id="5PS-5A-mSP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogg-Ua-ouB">
+                                <rect key="frame" x="16" y="174" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="timeLabel" destination="ogg-Ua-ouB" id="W6H-ci-Vtj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7W-nP-xPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

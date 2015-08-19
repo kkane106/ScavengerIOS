@@ -49,6 +49,7 @@ struct ElapsedTime {
         convertedTime.append((secondsElapsed / 60) % 60)
         convertedTime.append((secondsElapsed / 3600) % 24)
         convertedTime.append((secondsElapsed / 3600) / 24)
+        convertedTime.append(secondsElapsed)
         
         return convertedTime
     }

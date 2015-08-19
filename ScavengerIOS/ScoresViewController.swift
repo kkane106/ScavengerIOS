@@ -10,6 +10,7 @@ import UIKit
 import Parse
 
 class ScoresViewController: UIViewController {
+    @IBOutlet weak var timeLabel: UILabel!
 
     var completedHunt : PFObject?
     
@@ -22,6 +23,9 @@ class ScoresViewController: UIViewController {
         if let completedHunt = completedHunt {
             didReceiveScores(completedHunt, completion: { (playerScores) -> () in
                 println(playerScores)
+                if let totalTime : [Int] = playerScores["totalTime"] as? [Int] {
+                    self.timeLabel.text = "\(totalTime[3]) Days, \(totalTime[2]) Hours, \(totalTime[1]) Minutes, \(totalTime[0]) Seconds"
+                }
             })
 
         } else {
