@@ -45,6 +45,7 @@
 		3CE292F61B8433E800BF8D8A /* ScoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE292F51B8433E800BF8D8A /* ScoresViewController.swift */; };
 		3CE292FA1B84B95C00BF8D8A /* PastHuntsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE292F91B84B95C00BF8D8A /* PastHuntsTableViewController.swift */; };
 		3CE292FC1B84E5AE00BF8D8A /* SwiftColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE292FB1B84E5AE00BF8D8A /* SwiftColors.swift */; };
+		3CE293001B85014400BF8D8A /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE292FF1B85014400BF8D8A /* ForgotPasswordViewController.swift */; };
 		3CF468441B72ABB70082D254 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF468431B72ABB70082D254 /* Keys.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		3CE292F51B8433E800BF8D8A /* ScoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoresViewController.swift; sourceTree = "<group>"; };
 		3CE292F91B84B95C00BF8D8A /* PastHuntsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastHuntsTableViewController.swift; sourceTree = "<group>"; };
 		3CE292FB1B84E5AE00BF8D8A /* SwiftColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftColors.swift; sourceTree = "<group>"; };
+		3CE292FF1B85014400BF8D8A /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		3CF468431B72ABB70082D254 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		876A02643F58D295E9B80F0D /* Pods-ScavengerIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScavengerIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScavengerIOS/Pods-ScavengerIOS.release.xcconfig"; sourceTree = "<group>"; };
 		AA55DEB56A9A26588F87603B /* Pods-ScavengerIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScavengerIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScavengerIOS/Pods-ScavengerIOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				3C2A14831B839801002F9F24 /* HuntDescriptionViewController.swift */,
 				3CE292F51B8433E800BF8D8A /* ScoresViewController.swift */,
 				3CC4D8E91B83E4290096E87C /* Time.swift */,
+				3CE292FF1B85014400BF8D8A /* ForgotPasswordViewController.swift */,
 				3CC4D8EB1B83E4FF0096E87C /* MyPlayground.playground */,
 				3C6A87BF1B6FC5C70055A7A8 /* Main.storyboard */,
 				3CE292FB1B84E5AE00BF8D8A /* SwiftColors.swift */,
@@ -420,6 +423,7 @@
 				3CD969C31B6FE61E009574CB /* CurrentHuntViewController.swift in Sources */,
 				3CE292FA1B84B95C00BF8D8A /* PastHuntsTableViewController.swift in Sources */,
 				3CD969C71B700448009574CB /* ScavengerHunt.swift in Sources */,
+				3CE293001B85014400BF8D8A /* ForgotPasswordViewController.swift in Sources */,
 				3C3581A81B79185800BD1998 /* Location.swift in Sources */,
 				3C3581A31B7810F600BD1998 /* KeychainWrapper.m in Sources */,
 				3CE292FC1B84E5AE00BF8D8A /* SwiftColors.swift in Sources */,

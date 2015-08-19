@@ -141,9 +141,7 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         if (segue.identifier == "logoutSegueView") {
-            var navigationVC = segue.destinationViewController as! UINavigationController
-            var loginVC = navigationVC.topViewController as! LoginViewController
-            
+            var destinationVC = segue.destinationViewController as! LoginViewController
         }
 
     }

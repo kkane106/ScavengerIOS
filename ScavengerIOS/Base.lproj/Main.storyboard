@@ -87,6 +87,9 @@
                                 <state key="normal" title="Forgot Password?">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="ujQ-Ry-61x" kind="show" id="CGy-C6-HS7"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scavengr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Agf-6Q-jyX">
                                 <rect key="frame" x="16" y="110" width="568" height="76"/>
@@ -306,6 +309,7 @@
                             <constraint firstItem="rCL-en-sNi" firstAttribute="top" secondItem="nsp-Ku-gWM" secondAttribute="bottom" constant="8" id="mJU-GW-XMJ"/>
                             <constraint firstItem="nsp-Ku-gWM" firstAttribute="leading" secondItem="UfO-RW-jDB" secondAttribute="leadingMargin" id="po5-lM-1EG"/>
                             <constraint firstItem="rCL-en-sNi" firstAttribute="leading" secondItem="UfO-RW-jDB" secondAttribute="leadingMargin" constant="-16" id="r3l-sM-phW"/>
+                            <constraint firstItem="q5X-qb-eAG" firstAttribute="top" secondItem="sU7-aS-8xQ" secondAttribute="bottom" constant="8" id="r5u-22-nVT"/>
                             <constraint firstItem="rCL-en-sNi" firstAttribute="top" secondItem="nsp-Ku-gWM" secondAttribute="bottom" constant="-1" id="r66-pg-cf3"/>
                             <constraint firstItem="03V-xB-8If" firstAttribute="leading" secondItem="UfO-RW-jDB" secondAttribute="leadingMargin" id="wmQ-wR-B2s"/>
                             <constraint firstItem="k1x-pa-7ZT" firstAttribute="trailing" secondItem="UfO-RW-jDB" secondAttribute="trailingMargin" id="xfA-KU-1oE"/>
@@ -348,7 +352,7 @@
         <!--Forgot Password VC-->
         <scene sceneID="CSG-5L-Os1">
             <objects>
-                <viewController title="Forgot Password VC" id="ujQ-Ry-61x" sceneMemberID="viewController">
+                <viewController title="Forgot Password VC" id="ujQ-Ry-61x" customClass="ForgotPasswordViewController" customModule="ScavengerIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P45-ah-lHL"/>
                         <viewControllerLayoutGuide type="bottom" id="0gm-j7-GLa"/>
@@ -356,12 +360,87 @@
                     <view key="view" contentMode="scaleToFill" id="hJc-ap-iey">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGj-4R-1Vb">
+                                <rect key="frame" x="0.0" y="204" width="600" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="IZN-BW-ome"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="Request Password Reset">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doRequestPasswordReset:" destination="ujQ-Ry-61x" eventType="touchUpInside" id="Vav-Em-CYZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z54-x7-HO6">
+                                <rect key="frame" x="16" y="562" width="568" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BNX-yn-hjE"/>
+                                </constraints>
+                                <state key="normal" title="Here by mistake? Go Back!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doGoBackToLogin:" destination="ujQ-Ry-61x" eventType="touchUpInside" id="rBL-57-b19"/>
+                                    <segue destination="DDO-PD-SpB" kind="show" identifier="goBackToLogin" id="rwt-QF-433"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check your email label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDX-ss-Z6K">
+                                <rect key="frame" x="150" y="107" width="300" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IOI-kf-RMv">
+                                <rect key="frame" x="0.0" y="153" width="600" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Wi7-b3-JRd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IOI-kf-RMv" firstAttribute="leading" secondItem="hJc-ap-iey" secondAttribute="leadingMargin" constant="-16" id="4Jh-L2-Cc7"/>
+                            <constraint firstItem="z54-x7-HO6" firstAttribute="trailing" secondItem="hJc-ap-iey" secondAttribute="trailingMargin" id="6pT-nS-ZNc"/>
+                            <constraint firstItem="z54-x7-HO6" firstAttribute="leading" secondItem="hJc-ap-iey" secondAttribute="leadingMargin" id="8TK-LK-HfZ"/>
+                            <constraint firstItem="PDX-ss-Z6K" firstAttribute="top" secondItem="P45-ah-lHL" secondAttribute="bottom" constant="87" id="8ew-iW-WkG"/>
+                            <constraint firstItem="z54-x7-HO6" firstAttribute="leading" secondItem="hJc-ap-iey" secondAttribute="leadingMargin" id="CCI-bn-gje"/>
+                            <constraint firstItem="z54-x7-HO6" firstAttribute="top" secondItem="qGj-4R-1Vb" secondAttribute="bottom" constant="318" id="E2g-aU-etH"/>
+                            <constraint firstItem="qGj-4R-1Vb" firstAttribute="leading" secondItem="hJc-ap-iey" secondAttribute="leadingMargin" constant="-16" id="Fng-bf-LdA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PDX-ss-Z6K" secondAttribute="trailing" constant="134" id="Gxo-lp-3Df"/>
+                            <constraint firstItem="0gm-j7-GLa" firstAttribute="top" secondItem="z54-x7-HO6" secondAttribute="bottom" constant="8" id="PMY-qG-kBR"/>
+                            <constraint firstItem="z54-x7-HO6" firstAttribute="trailing" secondItem="hJc-ap-iey" secondAttribute="trailingMargin" id="PzX-4t-son"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qGj-4R-1Vb" secondAttribute="trailing" constant="-16" id="T20-H7-cNF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IOI-kf-RMv" secondAttribute="trailing" constant="-16" id="X0n-ih-fhD"/>
+                            <constraint firstItem="qGj-4R-1Vb" firstAttribute="top" secondItem="IOI-kf-RMv" secondAttribute="bottom" constant="21" id="YYW-aa-uIQ"/>
+                            <constraint firstItem="PDX-ss-Z6K" firstAttribute="leading" secondItem="hJc-ap-iey" secondAttribute="leadingMargin" constant="134" id="oAL-x0-9SS"/>
+                            <constraint firstItem="IOI-kf-RMv" firstAttribute="top" secondItem="PDX-ss-Z6K" secondAttribute="bottom" constant="25" id="uIF-zA-lha"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="6pT-nS-ZNc"/>
+                                <exclude reference="CCI-bn-gje"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="z54-x7-HO6" id="wFu-PF-JEm"/>
+                        <outlet property="checkEmailLabel" destination="PDX-ss-Z6K" id="uu3-eK-Rkw"/>
+                        <outlet property="emailTextField" destination="IOI-kf-RMv" id="sMH-Fo-UKl"/>
+                        <outlet property="requestResetButton" destination="qGj-4R-1Vb" id="I7W-rl-cKw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mIA-hV-P7Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1804" y="1088"/>
+            <point key="canvasLocation" x="1686" y="1159"/>
         </scene>
         <!--Home-->
         <scene sceneID="DI8-HA-MqI">
@@ -883,6 +962,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AuG-Ol-Cki"/>
+        <segue reference="OjA-IK-9mC"/>
+        <segue reference="p4z-CH-Mjr"/>
     </inferredMetricsTieBreakers>
 </document>
