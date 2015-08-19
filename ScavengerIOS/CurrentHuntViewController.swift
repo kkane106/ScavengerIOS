@@ -229,8 +229,6 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func doSkipLocation(sender: UIBarButtonItem) {
         ++self.skipCounter
         ++self.locationCounter
-        println(passedLocations!.count)
-        println(locationCounter)
         if (self.locationCounter) == (passedLocations!.count) {
             updateCompletedHunt({ (result) -> () in
                 self.completedHunt = result
@@ -248,7 +246,20 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    
+    @IBAction func quitHunt(sender: UIButton) {
+        var alert = UIAlertController(title: "Quit", message: "Are you sure you want to quit?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) -> Void in
+            self.updateCompletedHunt({ (result) -> () in
+                self.completedHunt = result
+                self.performSegueWithIdentifier("showScoresSegue", sender: nil)
+                
+            })
+
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
 }
 
 //        getSavedData { (data) -> () in

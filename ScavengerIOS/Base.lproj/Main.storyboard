@@ -489,35 +489,63 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGo-lF-MQQ">
                                 <rect key="frame" x="16" y="72" width="568" height="327"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="327" id="JFp-Me-6Iv"/>
+                                </constraints>
                             </mapView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Clue" translatesAutoresizingMaskIntoConstraints="NO" id="0Xx-wi-Tes">
-                                <rect key="frame" x="16" y="407" width="568" height="185"/>
+                                <rect key="frame" x="16" y="407" width="568" height="126"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="185" id="9An-Kc-bOO"/>
+                                    <constraint firstAttribute="height" constant="126" id="rZ5-Ug-FjI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9An-Kc-bOO"/>
+                                    </mask>
+                                </variation>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RhB-cx-JJy">
+                                <rect key="frame" x="16" y="541" width="568" height="51"/>
+                                <color key="backgroundColor" red="1" green="0.02745098248" blue="0.090196080509999998" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="qOO-TN-ADW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <state key="normal" title="Quit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="quitHunt:" destination="f97-vy-nzy" eventType="touchUpInside" id="L7E-oJ-hfO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="RhB-cx-JJy" firstAttribute="trailing" secondItem="zRd-SI-56x" secondAttribute="trailingMargin" id="3bh-kL-vDJ"/>
                             <constraint firstItem="PGo-lF-MQQ" firstAttribute="top" secondItem="GYN-6f-W3g" secondAttribute="bottom" constant="8" id="4ig-0i-0is"/>
                             <constraint firstItem="om5-BI-WMQ" firstAttribute="top" secondItem="0Xx-wi-Tes" secondAttribute="bottom" constant="8" id="7s2-9q-5oM"/>
                             <constraint firstItem="PGo-lF-MQQ" firstAttribute="trailing" secondItem="zRd-SI-56x" secondAttribute="trailingMargin" id="ADq-uq-UBC"/>
                             <constraint firstItem="0Xx-wi-Tes" firstAttribute="leading" secondItem="zRd-SI-56x" secondAttribute="leadingMargin" id="AcV-zj-Jhh"/>
                             <constraint firstItem="0Xx-wi-Tes" firstAttribute="leading" secondItem="zRd-SI-56x" secondAttribute="leadingMargin" id="E6U-x7-RML"/>
+                            <constraint firstItem="RhB-cx-JJy" firstAttribute="top" secondItem="0Xx-wi-Tes" secondAttribute="bottom" constant="8" id="GZP-pe-ETN"/>
                             <constraint firstItem="om5-BI-WMQ" firstAttribute="top" secondItem="0Xx-wi-Tes" secondAttribute="bottom" constant="8" id="JNj-ft-l3D"/>
                             <constraint firstItem="PGo-lF-MQQ" firstAttribute="trailing" secondItem="zRd-SI-56x" secondAttribute="trailingMargin" id="OEq-Bd-8vg"/>
                             <constraint firstItem="PGo-lF-MQQ" firstAttribute="leading" secondItem="zRd-SI-56x" secondAttribute="leadingMargin" id="Qex-wC-f4B"/>
                             <constraint firstItem="0Xx-wi-Tes" firstAttribute="trailing" secondItem="zRd-SI-56x" secondAttribute="trailingMargin" id="RRx-mU-qUN"/>
+                            <constraint firstItem="RhB-cx-JJy" firstAttribute="leading" secondItem="zRd-SI-56x" secondAttribute="leadingMargin" id="RYT-1A-JpC"/>
                             <constraint firstItem="om5-BI-WMQ" firstAttribute="top" secondItem="0Xx-wi-Tes" secondAttribute="bottom" constant="8" id="V2B-xT-OG2"/>
                             <constraint firstItem="0Xx-wi-Tes" firstAttribute="top" secondItem="PGo-lF-MQQ" secondAttribute="bottom" constant="8" id="XuV-M9-llq"/>
                             <constraint firstItem="PGo-lF-MQQ" firstAttribute="top" secondItem="GYN-6f-W3g" secondAttribute="bottom" constant="8" id="Z9n-VU-xHT"/>
                             <constraint firstItem="0Xx-wi-Tes" firstAttribute="top" secondItem="PGo-lF-MQQ" secondAttribute="bottom" constant="8" id="eGU-XI-Jl8"/>
+                            <constraint firstItem="0Xx-wi-Tes" firstAttribute="top" secondItem="PGo-lF-MQQ" secondAttribute="bottom" constant="8" id="fNS-cJ-MaZ"/>
                             <constraint firstItem="om5-BI-WMQ" firstAttribute="top" secondItem="0Xx-wi-Tes" secondAttribute="bottom" constant="8" id="iP5-BV-xbg"/>
                             <constraint firstItem="0Xx-wi-Tes" firstAttribute="trailing" secondItem="zRd-SI-56x" secondAttribute="trailingMargin" id="itg-3E-OmF"/>
                             <constraint firstItem="PGo-lF-MQQ" firstAttribute="leading" secondItem="zRd-SI-56x" secondAttribute="leadingMargin" id="r6l-He-Xit"/>
+                            <constraint firstItem="om5-BI-WMQ" firstAttribute="top" secondItem="RhB-cx-JJy" secondAttribute="bottom" constant="8" id="r73-cA-x5a"/>
                             <constraint firstItem="PGo-lF-MQQ" firstAttribute="leading" secondItem="zRd-SI-56x" secondAttribute="leadingMargin" id="rSZ-ON-HyI"/>
                         </constraints>
                         <variation key="default">
@@ -529,9 +557,11 @@
                                 <exclude reference="AcV-zj-Jhh"/>
                                 <exclude reference="RRx-mU-qUN"/>
                                 <exclude reference="XuV-M9-llq"/>
+                                <exclude reference="eGU-XI-Jl8"/>
                                 <exclude reference="7s2-9q-5oM"/>
                                 <exclude reference="JNj-ft-l3D"/>
                                 <exclude reference="V2B-xT-OG2"/>
+                                <exclude reference="iP5-BV-xbg"/>
                             </mask>
                         </variation>
                     </view>
