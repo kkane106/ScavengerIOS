@@ -227,7 +227,25 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func doSkipLocation(sender: UIBarButtonItem) {
-        
+        ++self.skipCounter
+        ++self.locationCounter
+        println(passedLocations!.count)
+        println(locationCounter)
+        if (self.locationCounter) == (passedLocations!.count) {
+            updateCompletedHunt({ (result) -> () in
+                self.completedHunt = result
+                var alert = UIAlertView()
+                alert.title = "It's over! You skipped \(self.skipCounter) locations."
+                alert.addButtonWithTitle("View times")
+                alert.show()
+
+                self.performSegueWithIdentifier("showScoresSegue", sender: nil)
+                
+            })
+            
+        } else {
+        setupMap(locationCounter)
+        }
     }
     
     
