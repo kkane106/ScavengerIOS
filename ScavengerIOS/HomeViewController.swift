@@ -60,5 +60,7 @@ class HomeViewController: UIViewController {
         self.presentViewController(navigationVC, animated: true, completion: nil)
     }
     
+    @IBAction func presentPastHunts(sender: UIButton) {
+    }
     
 }

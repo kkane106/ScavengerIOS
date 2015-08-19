@@ -255,6 +255,16 @@
                                     <segue destination="ng1-G1-C8h" kind="show" id="dm0-Ys-ivd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0R-jl-Hqm">
+                                <rect key="frame" x="262" y="323" width="76" height="30"/>
+                                <state key="normal" title="Past Hunts">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="presentPastHunts:" destination="zpW-gE-MgU" eventType="touchUpInside" id="Qei-Vz-GdR"/>
+                                    <segue destination="JPr-k6-6e6" kind="show" id="aWA-Eg-tdI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -299,6 +309,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hUN-tv-4co" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3291" y="415"/>
+        </scene>
+        <!--Past Hunts Table View Controller-->
+        <scene sceneID="ZDo-Vq-5Bm">
+            <objects>
+                <tableViewController id="JPr-k6-6e6" customClass="PastHuntsTableViewController" customModule="ScavengerIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QEw-8C-MRk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Wyp-dP-owV">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wyp-dP-owV" id="CDb-Fo-hVk">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="JPr-k6-6e6" id="acw-Yh-ryO"/>
+                            <outlet property="delegate" destination="JPr-k6-6e6" id="Cuj-hU-gsy"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JMB-82-dyp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3291" y="1153"/>
         </scene>
         <!--Profile VC-->
         <scene sceneID="76a-jX-gdy">
