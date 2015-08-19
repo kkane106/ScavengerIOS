@@ -135,11 +135,11 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
                         let start = String(stringInterpolationSegment: startTime)
                         println("This should be startTime: \(start)")
                         if let endTime: AnyObject = game["endTime"] {
-                            let end = String(stringInterpolationSegment: game["endTime"])
+                            let end = String(stringInterpolationSegment: endTime)
                             println("This should be endTime: \(end)")
                             var totalTime = ElapsedTime(startTime: start, endTime: end )
                             println("This should be totalTime: \(totalTime)")
-                            game["completeLocations"] = (self.locationCounter - self.skipCounter)
+                            game["completeLocations"] = (self.passedLocations!.count - self.skipCounter)
                             game["totalTime"] = totalTime.convertStringsToSeconds()
                             game["complete"] = self.didTheySkip()
                             game.saveInBackgroundWithBlock { (success, error: NSError?) -> Void in

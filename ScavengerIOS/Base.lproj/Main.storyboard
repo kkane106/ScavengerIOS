@@ -487,10 +487,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGo-lF-MQQ">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGo-lF-MQQ">
                                 <rect key="frame" x="16" y="72" width="568" height="327"/>
                             </mapView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Clue" translatesAutoresizingMaskIntoConstraints="NO" id="0Xx-wi-Tes">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Clue" translatesAutoresizingMaskIntoConstraints="NO" id="0Xx-wi-Tes">
                                 <rect key="frame" x="16" y="407" width="568" height="185"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -545,11 +545,30 @@
                     <connections>
                         <outlet property="clueTextView" destination="0Xx-wi-Tes" id="274-CI-H0h"/>
                         <outlet property="huntMap" destination="PGo-lF-MQQ" id="i7h-oR-lJs"/>
+                        <segue destination="X9I-Fj-q9X" kind="show" identifier="showScoresSegue" id="b2M-MT-CBM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTG-po-kaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5441" y="1159"/>
+        </scene>
+        <!--Scores View Controller-->
+        <scene sceneID="nyc-Sj-Phb">
+            <objects>
+                <viewController id="X9I-Fj-q9X" customClass="ScoresViewController" customModule="ScavengerIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o8u-Fr-GzB"/>
+                        <viewControllerLayoutGuide type="bottom" id="lr8-CR-I7K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5PS-5A-mSP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f7W-nP-xPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4680" y="1940"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hUw-qo-OCt">
