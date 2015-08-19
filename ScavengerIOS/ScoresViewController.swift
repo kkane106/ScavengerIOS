@@ -38,4 +38,13 @@ class ScoresViewController: UIViewController {
         completion(playerScores: receivedScores)
         
     }
+    @IBAction func returnToProfile(sender: UIButton) {
+        self.performSegueWithIdentifier("segueToHome", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let navVC = segue.destinationViewController as! UINavigationController
+        let destinationVC = navVC.topViewController as! HomeViewController
+    }
+    
 }

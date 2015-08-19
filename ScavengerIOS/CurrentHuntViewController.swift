@@ -222,6 +222,11 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
 
     }
     
+    @IBAction func doSkipLocation(sender: UIBarButtonItem) {
+        
+    }
+    
+    
 }
 
 //        getSavedData { (data) -> () in

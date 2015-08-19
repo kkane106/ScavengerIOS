@@ -487,10 +487,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGo-lF-MQQ">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGo-lF-MQQ">
                                 <rect key="frame" x="16" y="72" width="568" height="327"/>
                             </mapView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Clue" translatesAutoresizingMaskIntoConstraints="NO" id="0Xx-wi-Tes">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Clue" translatesAutoresizingMaskIntoConstraints="NO" id="0Xx-wi-Tes">
                                 <rect key="frame" x="16" y="407" width="568" height="185"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -541,6 +541,11 @@
                                 <action selector="doCheckLocation:" destination="f97-vy-nzy" id="RoT-0e-lyK"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Skip" id="ZTy-gg-fEa">
+                            <connections>
+                                <action selector="doSkipLocation:" destination="f97-vy-nzy" id="4bg-Ki-Gwk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="clueTextView" destination="0Xx-wi-Tes" id="274-CI-H0h"/>
@@ -570,11 +575,21 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoW-ML-PoI">
+                                <rect key="frame" x="46" y="355" width="110" height="30"/>
+                                <state key="normal" title="Return to Home">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="returnToProfile:" destination="X9I-Fj-q9X" eventType="touchUpInside" id="dvD-6b-bXX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="timeLabel" destination="ogg-Ua-ouB" id="W6H-ci-Vtj"/>
+                        <segue destination="muO-GJ-tjo" kind="show" identifier="segueToHome" id="YxS-H9-vwQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7W-nP-xPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -637,6 +652,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cTp-pk-y3W"/>
+        <segue reference="YxS-H9-vwQ"/>
     </inferredMetricsTieBreakers>
 </document>
