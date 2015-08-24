@@ -51,6 +51,20 @@ class LoginViewController: UIViewController {
 
     }
     
+    // Delegate method
+    
+    func controller(controller: ListHuntsViewController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "loginViewSegue" {
+            var navigationVC = segue.destinationViewController as! UINavigationController
+            var listVC = navigationVC.topViewController as! ListHuntsViewController
+
+        }
+    }
+    
     func setupLabel(label :UILabel) {
         label.textColor = UIColor.whiteColor()
         label.layer.shadowColor = UIColor.blackColor().CGColor
@@ -194,14 +208,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "loginViewSegue") {
-            println("inside the segue")
-            var navigationVC = segue.destinationViewController as! UINavigationController
-            var listVC = navigationVC.topViewController as! ListHuntsViewController
-            
-        }
-    }
+
     
     func saveUser(username: String, email: String, createdAt: NSDate, updatedAt: NSDate, objectId: String ) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

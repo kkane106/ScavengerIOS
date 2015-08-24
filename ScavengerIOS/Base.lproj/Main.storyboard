@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DDO-PD-SpB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BDR-yz-8cC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -8,7 +8,7 @@
         <!--Login VC-->
         <scene sceneID="KHx-kn-mro">
             <objects>
-                <viewController storyboardIdentifier="Login" title="Login VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DDO-PD-SpB" customClass="LoginViewController" customModule="ScavengerIOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" title="Login VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DDO-PD-SpB" customClass="LoginViewController" customModule="ScavengerIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="J5m-6q-rNA"/>
                         <viewControllerLayoutGuide type="bottom" id="gAt-dt-XwU"/>
@@ -207,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hLi-JL-Hph" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1766" y="-348"/>
+            <point key="canvasLocation" x="2226" y="-364"/>
         </scene>
         <!--SignUp VC-->
         <scene sceneID="PNa-rA-nJ5">
@@ -252,7 +252,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="DDO-PD-SpB" kind="show" id="OjA-IK-9mC"/>
+                                    <action selector="goBackToLogin:" destination="Wfz-oZ-q5U" eventType="touchUpInside" id="64P-bf-kke"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nsp-Ku-gWM">
@@ -347,7 +347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FsQ-Kp-Uui" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1686" y="451"/>
+            <point key="canvasLocation" x="1222" y="391"/>
         </scene>
         <!--Forgot Password VC-->
         <scene sceneID="CSG-5L-Os1">
@@ -440,7 +440,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mIA-hV-P7Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1686" y="1159"/>
+            <point key="canvasLocation" x="1470" y="1269"/>
         </scene>
         <!--Home-->
         <scene sceneID="DI8-HA-MqI">
@@ -719,26 +719,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOK-G5-fWP">
-                                <rect key="frame" x="277" y="82" width="46" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOK-G5-fWP">
+                                <rect key="frame" x="16" y="111" width="568" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbx-Ep-8dx">
+                                <rect key="frame" x="16" y="161" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVN-DJ-Jvo">
-                                <rect key="frame" x="258" y="273" width="88" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Locations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbx-Ep-8dx">
-                                <rect key="frame" x="263" y="190" width="75" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BcU-C4-ZaZ">
-                                <rect key="frame" x="277" y="353" width="44" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BcU-C4-ZaZ">
+                                <rect key="frame" x="16" y="413" width="568" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="Begin!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -746,11 +741,32 @@
                                     <segue destination="QU6-gy-RfP" kind="show" identifier="showCurrentHunt" id="PPa-jX-HLs"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description Text View" translatesAutoresizingMaskIntoConstraints="NO" id="f6w-g7-y88">
+                                <rect key="frame" x="16" y="200" width="568" height="205"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BcU-C4-ZaZ" firstAttribute="trailing" secondItem="6Bb-IH-b93" secondAttribute="trailingMargin" id="C1o-2O-rGz"/>
+                            <constraint firstItem="BcU-C4-ZaZ" firstAttribute="top" secondItem="f6w-g7-y88" secondAttribute="bottom" constant="8" id="CgJ-RE-PgG"/>
+                            <constraint firstItem="vbx-Ep-8dx" firstAttribute="top" secondItem="nOK-G5-fWP" secondAttribute="bottom" constant="22" id="DBE-q4-ebM"/>
+                            <constraint firstItem="nOK-G5-fWP" firstAttribute="top" secondItem="Ypj-qx-iev" secondAttribute="bottom" constant="47" id="GZW-WG-jPW"/>
+                            <constraint firstItem="nOK-G5-fWP" firstAttribute="leading" secondItem="6Bb-IH-b93" secondAttribute="leadingMargin" id="Lqz-is-bXN"/>
+                            <constraint firstItem="f6w-g7-y88" firstAttribute="top" secondItem="vbx-Ep-8dx" secondAttribute="bottom" constant="18" id="Y2B-xu-yUo"/>
+                            <constraint firstItem="BcU-C4-ZaZ" firstAttribute="leading" secondItem="6Bb-IH-b93" secondAttribute="leadingMargin" id="e4c-AF-BNH"/>
+                            <constraint firstItem="vbx-Ep-8dx" firstAttribute="trailing" secondItem="6Bb-IH-b93" secondAttribute="trailingMargin" id="l25-m9-6KQ"/>
+                            <constraint firstItem="vbx-Ep-8dx" firstAttribute="leading" secondItem="6Bb-IH-b93" secondAttribute="leadingMargin" id="lnf-D3-mRf"/>
+                            <constraint firstItem="f6w-g7-y88" firstAttribute="leading" secondItem="6Bb-IH-b93" secondAttribute="leadingMargin" id="lyc-1V-QPG"/>
+                            <constraint firstItem="f6w-g7-y88" firstAttribute="trailing" secondItem="6Bb-IH-b93" secondAttribute="trailingMargin" id="wMF-u9-Ijc"/>
+                            <constraint firstItem="1Vh-0M-Caj" firstAttribute="top" secondItem="BcU-C4-ZaZ" secondAttribute="bottom" constant="147" id="wOM-nv-L5f"/>
+                            <constraint firstItem="nOK-G5-fWP" firstAttribute="trailing" secondItem="6Bb-IH-b93" secondAttribute="trailingMargin" id="yv3-36-rHT"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="descriptionLabel" destination="YVN-DJ-Jvo" id="hES-ed-IZa"/>
+                        <outlet property="descriptionTextView" destination="f6w-g7-y88" id="ckL-4c-G11"/>
                         <outlet property="numberOfLocationsLabel" destination="vbx-Ep-8dx" id="nR6-Yb-0QG"/>
                         <outlet property="scavengerHuntNameLabel" destination="nOK-G5-fWP" id="QXc-Fl-s6Y"/>
                     </connections>
@@ -850,7 +866,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="OCv-6b-UHU">
-                        <barButtonItem key="leftBarButtonItem" title="Find Me" id="0v9-xz-kdS">
+                        <barButtonItem key="leftBarButtonItem" title="Check Location" id="0v9-xz-kdS">
                             <connections>
                                 <action selector="doCheckLocation:" destination="f97-vy-nzy" id="RoT-0e-lyK"/>
                             </connections>
@@ -944,7 +960,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EBO-Wr-R7U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2479" y="415"/>
+            <point key="canvasLocation" x="2239" y="575"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sph-62-BH1">
@@ -966,7 +982,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OjA-IK-9mC"/>
-        <segue reference="6gw-E8-E6m"/>
+        <segue reference="p4z-CH-Mjr"/>
     </inferredMetricsTieBreakers>
 </document>

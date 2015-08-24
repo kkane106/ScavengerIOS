@@ -76,6 +76,10 @@ class SignUpViewController: UIViewController {
         textField.leftViewMode = UITextFieldViewMode.Always
         
     }
+    @IBAction func goBackToLogin(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
     
     @IBAction func doVerifySignUp(sender: UIButton) {
         if emailTextField.text == "" {
@@ -152,7 +156,7 @@ class SignUpViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "signUpSegue") {
             var navigationVC = segue.destinationViewController as! UINavigationController
-            var homeVC = navigationVC.topViewController as! HomeViewController
+            var homeVC = navigationVC.topViewController as! ListHuntsViewController
             
         }
     }

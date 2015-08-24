@@ -17,6 +17,7 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var scavengerHuntsTableView: UITableView!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
+    
     var currentGeoPoint : PFGeoPoint?
 
     let locManager = CLLocationManager()
@@ -28,8 +29,19 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var scavengerHunts = [PFObject]()
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if PFUser.currentUser() == nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginVC = storyboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
+            self.presentViewController(loginVC, animated: true, completion: nil)
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         updateScavengerHunts(searchDistance, completion: { (response) -> () in
             self.scavengerHunts = response
             self.scavengerHuntsTableView.reloadData()
@@ -43,6 +55,8 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
             locManager.startUpdatingLocation()
             
         }
+        
+
         
         
         scavengerHuntsTableView.delegate = self
@@ -71,7 +85,7 @@ class ListHuntsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func presentLoginVC() {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let vc : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Login") as! LoginViewController
+        let vc : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
         self.presentViewController(vc, animated: true, completion: nil)
     }
     

@@ -14,10 +14,10 @@ import CoreLocation
 class HuntDescriptionViewController: UIViewController {
 
     
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var scavengerHuntNameLabel: UILabel!
     @IBOutlet weak var numberOfLocationsLabel: UILabel!
-
+    @IBOutlet weak var descriptionTextView: UITextView!
+    
     var receivedScavengerHunt : PFObject?
     var locationsForHunt : [PFObject]?
     
@@ -30,9 +30,9 @@ class HuntDescriptionViewController: UIViewController {
     func setupDescription() {
         if let receivedScavengerHunt = receivedScavengerHunt {
             getDetailsForHunt(receivedScavengerHunt, completion: { (description, name, locations) -> () in
-                self.descriptionLabel.text = description
+                self.descriptionTextView.text = description
                 self.scavengerHuntNameLabel.text = name
-                self.numberOfLocationsLabel.text = String(locations.count)
+                self.numberOfLocationsLabel.text = "Number of locations: \(String(locations.count))"
                 self.locationsForHunt = locations
                 
             })

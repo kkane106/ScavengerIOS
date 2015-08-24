@@ -200,10 +200,12 @@ class CurrentHuntViewController: UIViewController, CLLocationManagerDelegate {
                     return
                 }
                 
+                let clue = locations[counter]["clue"] as! String
+                
                 let lat = locations[counter]["coordinate"]!.latitude
                 let long = locations[counter]["coordinate"]!.longitude
                 let initialLocation = CLLocation(latitude: lat, longitude: long)
-                self.clueTextView.text = locations[counter]["clue"] as! String
+                self.clueTextView.text = "Clue: \n\(clue)"
                 
                 self.objective = initialLocation
 
